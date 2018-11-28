@@ -12,8 +12,13 @@ function demandePseudo(){
     <form method="post" action="index.php">
     Entrer votre pseudo  <input type="text" name="pseudo"/>
     </br>
+    Entrer votre mdp:<input type="password" name="mdp" size="20"/>
     </br>
-    <input type="submit" name="soumettre" value="envoyer"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Envoyer"/>
+    <input type="reset" value="Annuler"/>
+    <br/>
     </form>
     <br/>
     <br/>
