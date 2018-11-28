@@ -42,8 +42,7 @@ class Modele
   private $connexion;
 
   // Constructeur
-  function __construct()
-  {
+  function __construct() {
     try {
       $chaine="mysql:host=".HOST.";dbname=".BD;
       $this->connexion = new PDO($chaine, LOGIN,PASSWORD);
@@ -56,8 +55,7 @@ class Modele
   }
 
   // Méthode qui nous déconnecte de la base
-  public function deconnexion()
-  {
+  public function deconnexion() {
     $this->connexion=null;
   }
 
@@ -68,23 +66,19 @@ class Modele
   * Post-condition : Donne un tableau contenant les 'pseudo's des joueurs
   * Gestion Erreur : TableAccesException est lancée
   */
-  public function getPseudos()
-  {
-    try {
-      // Requete sur la base de donnée
-      $requete=$this->connexion->query("SELECT pseudo FROM joueurs");
+  public function getPseudos(){
+   try{
 
-      // Boucle qui remplit le tableau de retour avec les pseudos
-      while ($ligne=$requete->fetch()) {
-        $resultat[]=$ligne['pseudo'];
-      }
+  $statement=$this->connexion->query("SELECT pseudo from pseudonyme;");
 
-      return($resultat);
-
-    } catch (TableAccesException $e) {
-
+  while($ligne=$statement->fetch()){
+  $result[]=$ligne['pseudo'];
+  }
+  return($result);
+  }
+  catch(PDOException $e){
+      throw new TableAccesException("problème avec la table pseudonyme");
     }
-
   }
 
   /*
@@ -93,9 +87,25 @@ class Modele
   * Post-condition : vrai si le pseudo existe, faux sinon
   * Gestion d'erreurs : TableAccesException est lancé
   */
-  public function pseudoExiste($pseudo)
-  {
-    // TODO: Ecrire cette fonction, setup la RPI et tester ce qui a été fait jusque la
-  }
+  public function exists($pseudo){
+try{
+	$statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
+	$statement->bindParam(1, $pseudoParam);
+	$pseudoParam=$pseudo;
+	$statement->execute();
+	$result=$statement->fetch(PDO::FETCH_ASSOC);
+
+	if ($result["id"]!=NUll){
+	return true;
+	}
+	else{
+	return false;
+	}
+}
+catch(PDOException $e){
+    $this->deconnexion();
+    throw new TableAccesException("problème avec la table pseudonyme");
+    }
+}
 
 }

@@ -8,5 +8,10 @@ define("PATH_VUE", HOME_SITE."/vue");
 define("PATH_CONTROLEUR",HOME_SITE."/controleur");
 define("PATH_MODELE",HOME_SITE."/modele");
 
-// TODO: Les données pour les connexions a SQL
+
+// données pour la connexion au sgbd
+define("HOST","localhost");
+define("BD","E174250C");
+define("LOGIN","E174250C");
+define("PASSWORD","E174250C");
 ?>
