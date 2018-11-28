@@ -4,8 +4,8 @@ require_once 'ControleurAuthentification.php';
 /**
  * Classe qui route les requetes
  */
-class Routeur
-{
+class Routeur{
+  private $ControleurAuthentification;
 
   function __construct()
   {
@@ -17,7 +17,7 @@ class Routeur
   */
   public function routerRequete()
   {
-    
+    $this->ControleurAuthentification->accueil();
   }
 }
 

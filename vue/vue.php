@@ -3,7 +3,7 @@
 class Vue{
 
 function demandePseudo(){
-    header("Content-type: text/html; charset=utf-8");
+   
 ?>
     <html>
     <body>
@@ -18,5 +18,6 @@ function demandePseudo(){
     <br/>
     <br/>
 <?php
+    }
 }
 ?>
