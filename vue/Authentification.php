@@ -6,7 +6,7 @@
 <form method="post" action="index.php">
     Entrer votre pseudo  <input type="text" name="pseudo"/>
     </br>
-    Entrer votre mdp:<input type="password" name="mdp" size="20"/>
+    Entrer votre mdp <input type="password" name="mdp" size="20"/>
     </br>
     <br/>
     <br/>

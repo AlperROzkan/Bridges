@@ -14,10 +14,10 @@ $this->modele=new Modele();
 }
 
 function accueil(){
-    if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"])){
-        $messages = $this->modele->get10RecentMessage();
-        $this->vue->demandeMessage($messages);
+    if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))){
+        $this->vue->test();
         $_SESSION['pseudo'] = $_POST["pseudo"];
+        
     } else {
         $this->vue->demandePseudo();
     }

@@ -2,7 +2,10 @@
 
 class Vue{
     function demandePseudo(){
-        require "Authentification.php";
+        include "Authentification.php";
+    }
+    function test(){
+        include "Test.php";
     }
 }
 ?>
