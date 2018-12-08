@@ -1,11 +1,28 @@
 <?php
 
-class Vue{
-    function demandePseudo(){
-        include "Authentification.php";
+class Vue
+{
+
+    /**
+     * Gere l'authentification du jeu
+     */
+    function demandeLogin()
+    {
+        require "Authentification.php";
     }
-    function test(){
+
+    function test()
+    {
         include "Test.php";
     }
+
+    /**
+     * Gere le jeu en lui même
+     */
+    function commenceJeu()
+    {
+        require "Jeu.php";
+    }
 }
+
 ?>

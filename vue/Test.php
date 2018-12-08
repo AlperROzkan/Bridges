@@ -4,6 +4,6 @@
 <br/>
 <br/>
 TEST
-<?php echo (htmlentities("Bienvenue à vous, ".$_SESSION["pseudo"])); ?>
+<?php echo(htmlentities("Bienvenue à vous, " . $_SESSION["pseudo"])); ?>
 <br/>
 <br/>

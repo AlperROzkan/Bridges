@@ -4,21 +4,32 @@ require_once 'ControleurAuthentification.php';
 /**
  * Classe qui route les requetes
  */
-class Routeur{
-  private $ControleurAuthentification;
+class Routeur
+{
+    private $ControleurAuthentification;
 
-  function __construct()
-  {
-    $this->ControleurAuthentification = new ControleurAuthentification();
-  }
+    function __construct()
+    {
+        try {
+            $this->ControleurAuthentification = new ControleurAuthentification();
+        } catch (ConnexionException $exception) {
+            echo "ConnexionException dans Routeur.php";
+            var_dump($this);
+        }
+    }
 
-  /**
-  * Permet de diriger les requetes
-  */
-  public function routerRequete()
-  {
-    $this->ControleurAuthentification->accueil();
-  }
+    /**
+     * Permet de diriger les requetes
+     */
+    public function routerRequete()
+    {
+        try {
+            $this->ControleurAuthentification->accueil();
+        } catch (TableAccesException $exception) {
+            echo "TableAccesException dans Routeur.php";
+            var_dump($this);
+        }
+    }
 }
 
 ?>

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
-<br/>
-<br/>
-<form method="post" action="index.php">
-    Entrer votre pseudo  <input type="text" name="pseudo"/>
-    </br>
-    Entrer votre mdp <input type="password" name="mdp" size="20"/>
-    </br>
-    <br/>
-    <br/>
+<form method="post" action="../index.php">
+    <br>
+    <label> Entrez votre pseudo
+        <input type="text" name="pseudo"/>
+    </label>
+
+    <br>
+    <label> Entrez votre mdp
+        <input type="password" name="mdp" size="20"/>
+    </label>
+    <br>
+    <br>
+    <br>
     <input type="submit" value="Envoyer"/>
     <input type="reset" value="Annuler"/>
-    <br/>
+    <br>
 </form>
+</body>
+<br/>
 <br/>
 <br/>
