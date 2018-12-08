@@ -13,7 +13,7 @@ class Routeur
         try {
             $this->ControleurAuthentification = new ControleurAuthentification();
         } catch (ConnexionException $exception) {
-            echo "ConnexionException dans Routeur.php";
+            echo "ConnexionException dans Routeur.php <br>";
             var_dump($this);
         }
     }
@@ -26,7 +26,7 @@ class Routeur
         try {
             $this->ControleurAuthentification->accueil();
         } catch (TableAccesException $exception) {
-            echo "TableAccesException dans Routeur.php";
+            echo "TableAccesException dans Routeur.php <br>";
             var_dump($this);
         }
     }
