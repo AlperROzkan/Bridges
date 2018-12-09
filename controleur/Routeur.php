@@ -18,12 +18,7 @@ class Routeur
      */
     public function routerRequete()
     {
-        try {
             $this->ControleurAuthentification->accueil();
-        } catch (TableAccesException $exception) {
-            echo "TableAccesException dans Routeur.php <br>";
-            var_dump($this);
-        }
     }
 }
 
