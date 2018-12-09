@@ -13,7 +13,7 @@ class Vue
 
     function test()
     {
-        include "Test.php";
+        require "Test.php";
     }
 
     /**

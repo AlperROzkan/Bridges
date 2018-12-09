@@ -10,12 +10,7 @@ class Routeur
 
     function __construct()
     {
-        try {
-            $this->ControleurAuthentification = new ControleurAuthentification();
-        } catch (ConnexionException $exception) {
-            echo "ConnexionException dans Routeur.php <br>";
-            var_dump($this);
-        }
+        $this->ControleurAuthentification = new ControleurAuthentification();
     }
 
     /**
