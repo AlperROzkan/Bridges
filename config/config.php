@@ -11,7 +11,7 @@ define("PATH_MODELE", HOME_SITE."/modele");
 
 // données pour la connexion au sgbd
 define("HOST", "localhost");
-define("BD", "E174250C");
-define("LOGIN", "E174250C");
-define("PASSWORD", "E174250C");
+define("BD", "X");
+define("LOGIN", "X");
+define("PASSWORD", "X");
 ?>

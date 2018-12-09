@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form method="post" action="../index.php">
+<form method="post" action="../Bridges/index.php">
     <br>
     <label> Entrez votre pseudo :
         <input type="text" name="pseudo"/>
