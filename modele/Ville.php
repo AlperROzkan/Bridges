@@ -7,6 +7,7 @@ class Ville
     private $id;
     private $nombrePontsMax;
     private $nombrePonts;
+
     // un tableau associatif qui stocke les villes qui sont reliées à la ville cible et le nombre de ponts qui les relient (ce nombre de ponts doit être <=2)
     private $villesLiees;
 

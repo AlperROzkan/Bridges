@@ -31,8 +31,5 @@ class ControleurAuthentification
         } else {
             $this->vue->demandeLogin();
         }
-
     }
-
-
 }
