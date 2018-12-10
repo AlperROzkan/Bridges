@@ -52,7 +52,7 @@ $colonnes = 5;
                 <?php
                 for ($j = 0; $j < $colonnes; $j++) {
                     ?>
-                    <td><input type="image" src="../Bridges/vue/img/interestingImage.jpg" alt="submit"></td>
+                    <td><input type="image" src="../Bridges/vue/img/one.jpg" alt="submit"></td>
                     <?php
                 }
                 ?>
