@@ -41,24 +41,28 @@ $colonnes = 5;
     </tr>
     </thead>
 
-    <!-- La zone de jeu -->
-    <tbody>
-    <?php
-    for ($i = 0; $i < $lignes; $i++) {
-        ?>
-        <tr>
-            <?php
-            for ($j = 0; $j < $colonnes; $j++) {
-                ?>
-                <td>Hello</td>
-                <?php
-            }
-            ?>
-        </tr>
+
+    <form method="post" action="../Bridges/index.php">
+        <!-- La zone de jeu -->
+        <tbody>
         <?php
-    }
-    ?>
-    </tbody>
+        for ($i = 0; $i < $lignes; $i++) {
+            ?>
+            <tr>
+                <?php
+                for ($j = 0; $j < $colonnes; $j++) {
+                    ?>
+                    <td><input type="image" src="../Bridges/vue/img/interestingImage.jpg" alt="submit"></td>
+                    <?php
+                }
+                ?>
+            </tr>
+            <?php
+        }
+        ?>
+        </tbody>
+    </form>
+
 
 
 </table>
