@@ -6,7 +6,6 @@
     <label> Entrez votre pseudo :
         <input type="text" name="pseudo"/>
     </label>
-
     <br>
     <label> Entrez votre mot de passe :
         <input type="password" name="mdp" size="20"/>
