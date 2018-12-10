@@ -54,8 +54,6 @@ class Ville
         return $this->nombrePonts;
     }
 
-
-
     /**
      * modifieur qui permet de valuer l'attribut nombrePonts
      * @param $nb
@@ -66,4 +64,19 @@ class Ville
     }
 
     //il faut ici implémenter les méthodes qui permettent de lier des villes entre elles, ...
+
+    /**
+     * Methode permettant de lier les villes entre elles
+     * postcondition : nombre de ponts <= 2
+     * @param $villeALier Ville que l'on doit lier avec this.
+     */
+    function lieVille(Ville $villeALier) {
+        // Respect des instructions
+        if (!$this->getNombrePonts()>2) {
+            // TODO : Quelquechose d'élégant pour dire a l'utilisateur qu'il essaye de lier beaucoup trop de villes en même temps
+        }
+        else {
+            $this->villesLiees[$this->getId()] = $villeALier->getId();
+        }
+    }
 }
