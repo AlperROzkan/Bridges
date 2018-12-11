@@ -6,8 +6,8 @@
  * Time: 09:19
  */
 // Initialisation des variables
-$lignes = 7;
-$colonnes = 5;
+$lignes = $villes->maxX();
+$colonnes = $villes->maxY();
 ?>
 
 <!DOCTYPE html>

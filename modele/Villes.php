@@ -56,5 +56,24 @@ class Villes
 
     //rajout d'éventuelles méthodes
 
+    /**
+     * Retourne un entier qui donne le maximum des abscisses des villes
+     * @return int
+     */
+    function maxX() {
+        // TODO A ameliorer
+        return 6;
+    }
+
+    /**
+     * Retourne un entier qui donne le maximum des ordonnées des villes
+     * @return int
+     */
+    function maxY() {
+        // TODO A ameliorer
+        return 6;
+    }
+
+
 
 }
