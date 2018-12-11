@@ -1,6 +1,8 @@
 table,
 td {
     border: 1px solid #333;
+    width: 129px;
+    height: 129px;
 }
 
 thead,
