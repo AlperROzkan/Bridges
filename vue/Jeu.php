@@ -75,12 +75,14 @@ $colonnes = 5;
 
 
 <?php
-for ($j = 0; $j < $colonnes; $j++) {
-    if ($villes->existe($i, $j)) {
-      echo "../Bridges/vue/img/".".png"
-    }
+for ($i = 0; $i < $lignes; $i++) {
+  for ($j = 0; $j < $colonnes; $j++) {
+      if ($villes->existe($i, $j)) {
+        echo "../Bridges/vue/img/".$villes[$i][$j].getNombrePontsMax().".png"
+      }
+  }
 }
- ?>
+?>
 
 
 
