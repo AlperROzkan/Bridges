@@ -57,7 +57,7 @@ $colonnes = $villes->maxY();
                         <?php
                     } else {
                         ?>
-                        <td><input type="image" src="../Bridges/vue/img/blanc.png"></td>
+                        <td><input type="image" src="../Bridges/vue/img/blanc.png" disabled></td>
                         <?php
                     }
                 }
