@@ -30,10 +30,10 @@ class ControleurAuthentification
         session_unset();
         $this->vue->demandeLogin();
       } else if (isset($_SESSION['pseudo'])){
-        $this->vue->commenceJeu($villes);
+        $this->vue->commenceJeu($this->villes);
       } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
           $_SESSION['pseudo'] = $_POST["pseudo"];
-          $this->vue->commenceJeu($villes);
+          $this->vue->commenceJeu($this->villes);
       } else {
           $this->vue->demandeLogin();
         }
