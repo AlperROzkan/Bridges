@@ -62,7 +62,7 @@ class Villes
      */
     function maxX() {
         // TODO A ameliorer
-        return 6;
+        return 6+1;
     }
 
     /**
@@ -71,7 +71,7 @@ class Villes
      */
     function maxY() {
         // TODO A ameliorer
-        return 6;
+        return 6+1;
     }
 
 

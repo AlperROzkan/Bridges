@@ -44,12 +44,12 @@ $colonnes = $villes->maxY();
         <!-- La zone de jeu -->
         <tbody>
         <?php
-        for ($i = 0; $i <= $lignes; $i++) {
+        for ($i = 0; $i < $lignes; $i++) {
             ?>
             <tr>
                 <?php
 
-                for ($j = 0; $j <= $colonnes; $j++) {
+                for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
 
