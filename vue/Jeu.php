@@ -41,8 +41,7 @@ $colonnes = 5;
     </tr>
     </thead>
 
-
-    <form method="post" action="../Bridges/index.php">
+    <form method="post" action="">
         <!-- La zone de jeu -->
         <tbody>
         <?php
@@ -50,6 +49,7 @@ $colonnes = 5;
             ?>
             <tr>
                 <?php
+                echo $bonjour;
                 for ($j = 0; $j < $colonnes; $j++) {
                     ?>
                     <td><input type="image" src="../Bridges/vue/img/one.jpg" alt="submit"></td>

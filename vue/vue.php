@@ -14,7 +14,7 @@ class Vue
     /**
      * Gere le jeu en lui même
      */
-    function commenceJeu()
+    function commenceJeu($bonjour)
     {
         require "Jeu.php";
     }
