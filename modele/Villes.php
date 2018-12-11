@@ -76,11 +76,11 @@ class Villes
 
     function tmp(){
       $res = 0;
-      while (isset($villes[$i][0])) {
+      while ($villes[$i][0])) {
         $res++;
       }
 
-      return $res;
+      return sizeof($villes);
     }
 
 }
