@@ -19,19 +19,6 @@ $colonnes = 5;
 </head>
 
 <body>
-
-  <?php
-  for ($i = 0; $i < $lignes; $i++) {
-    for ($j = 0; $j < $colonnes; $j++) {
-        if ($villes->existe($i, $j)) {
-          echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png <br>";
-        }
-    }
-  }
-  ?>
-
-
-
 <h1>Bridges</h1>
 <h2>Eliott ROBIN et Alper OZKAN -- Info 2 Groupe 3 </h2>
 <h3><?php echo(htmlentities("Bienvenue à vous, " . $_SESSION["pseudo"])); ?></h3>
@@ -66,7 +53,7 @@ $colonnes = 5;
                     if ($villes->existe($i, $j)) {
                         ?>
 
-                        <td><input type="image" src="../Bridges/vue/img/1.png" alt="submit"></td>
+                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png <br>";?>" alt="submit"></td>
                         <?php
                     } else {
                         ?>
