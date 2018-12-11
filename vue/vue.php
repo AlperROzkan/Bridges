@@ -11,11 +11,6 @@ class Vue
         require "Authentification.php";
     }
 
-    function test()
-    {
-        require "Test.php";
-    }
-
     /**
      * Gere le jeu en lui même
      */
