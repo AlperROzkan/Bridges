@@ -53,7 +53,7 @@ $colonnes = 5;
                 for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
-                        <td><input type="image" src="../Bridges/vue/img/un.png" alt="submit"></td>
+                        <td><input type="image" src="../Bridges/vue/img/1.png" alt="submit"></td>
                         <?php
                     } else {
                         ?>
