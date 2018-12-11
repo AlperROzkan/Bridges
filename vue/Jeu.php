@@ -24,7 +24,7 @@ $colonnes = 5;
   for ($i = 0; $i < $lignes; $i++) {
     for ($j = 0; $j < $colonnes; $j++) {
         if ($villes->existe($i, $j)) {
-          echo "A";
+          echo "../Bridges/vue/img/".$i.$j.".png <br>";
         }
     }
   }
