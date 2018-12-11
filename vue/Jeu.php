@@ -6,8 +6,8 @@
  * Time: 09:19
  */
 // Initialisation des variables
-$lignes = $villes->maxX();
-$colonnes = $villes->maxY();
+$lignes = 7;
+$colonnes = 5;
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ $colonnes = $villes->maxY();
                     if ($villes->existe($i, $j)) {
                         ?>
 
-                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png <br>";?>" alt="submit"></td>
+                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png";?>" alt="submit"></td>
                         <?php
                     } else {
                         ?>
