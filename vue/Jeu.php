@@ -29,7 +29,7 @@ $colonnes = 5;
 <form method="post" action="../Bridges/index.php">
     <!-- TODO : Tester plus en détail le fonctionnement de la deco, c'est un peu bricolé ce que j'ai fait-->
     <!--Deconnexion-->
-    <input type="submit" value="Deconnexion">
+    <input type="submit" name="deco" value="Deconnexion">
 </form>
 
 <!-- Plateau de jeu -->
