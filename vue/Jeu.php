@@ -53,7 +53,7 @@ $colonnes = 5;
                 for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
-                        <?php echo "../Bridges/vue/img/".$villes[$i][$j].getNombrePontsMax().".png"?>
+
                         <td><input type="image" src="../Bridges/vue/img/1.png" alt="submit"></td>
                         <?php
                     } else {
@@ -72,6 +72,18 @@ $colonnes = 5;
 
 
 </table>
+
+
+<?php
+for ($j = 0; $j < $colonnes; $j++) {
+    if ($villes->existe($i, $j)) {
+      echo "../Bridges/vue/img/".$villes[$i][$j].getNombrePontsMax().".png"
+    }
+}
+ ?>
+
+
+
 
 </body>
 </html>
