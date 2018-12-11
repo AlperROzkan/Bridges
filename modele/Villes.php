@@ -80,7 +80,7 @@ class Villes
         $res++;
       }
 
-      return sizeof($villes);
+      return sizeof($villes[][]);
     }
 
 }
