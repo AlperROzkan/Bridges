@@ -7,7 +7,7 @@
  */
 // Initialisation des variables
 $lignes = 7;
-echo max(array(2, 4, 5));
+echo max(array(array(2, 4, 5),array(5,6,9,8));
 $colonnes = $villes->maxY();
 ?>
 
