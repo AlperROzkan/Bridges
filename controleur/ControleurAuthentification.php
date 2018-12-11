@@ -33,11 +33,7 @@ class ControleurAuthentification
         $this->vue->commenceJeu($this->villes);
       } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
           $_SESSION['pseudo'] = $_POST["pseudo"];
-<<<<<<< HEAD
-          $this->vue->commenceJeu(false);
-=======
           $this->vue->commenceJeu($this->villes);
->>>>>>> 71169d1acd9301f8a98bf8c89bddaf13849b5cdf
       } else {
           $this->vue->demandeLogin(true);
         }
