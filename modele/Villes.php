@@ -61,8 +61,8 @@ class Villes
      * @return int
      */
     function maxX() {
-        // TODO A ameliorer
-        return 6+1;
+
+        return $this->villes->sizeof() ;
     }
 
     /**
