@@ -61,8 +61,8 @@ class Villes
      * @return int
      */
     function maxX() {
-
-        return $this->villes->sizeof() ;
+    
+      return 6+1 ;
     }
 
     /**
@@ -74,6 +74,15 @@ class Villes
         return 6+1;
     }
 
+    function tmp(){
+      $res = 0;
+      foreach($villes as $ligne){
+        foreach($ligne as $cle=>$valeur){
+          echo "<dt>$key</dt><dd>$value</dd>";
+          $res++;
+      }
 
+      return $res;
+    }
 
 }

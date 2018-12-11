@@ -6,8 +6,8 @@
  * Time: 09:19
  */
 // Initialisation des variables
-$lignes = 7;
-echo max(array(array(2, 4, 5),array(5,6,9,8));
+$lignes = $villes->maxX();
+echo $villes->tmp();
 $colonnes = $villes->maxY();
 ?>
 
