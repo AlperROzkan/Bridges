@@ -13,8 +13,9 @@ class Vue
 
     /**
      * Gere le jeu en lui même
+     * @param $villes
      */
-    function commenceJeu($bonjour)
+    function commenceJeu($villes)
     {
         require "Jeu.php";
     }

@@ -37,7 +37,7 @@ $colonnes = 5;
     <!-- Le titre du jeu -->
     <thead>
     <tr>
-        <th colspan=<?php echo $colonnes?>>Bridges</th>
+        <th colspan=<?php echo $colonnes ?>>Bridges</th>
     </tr>
     </thead>
 
@@ -49,11 +49,17 @@ $colonnes = 5;
             ?>
             <tr>
                 <?php
-                echo $bonjour;
+
                 for ($j = 0; $j < $colonnes; $j++) {
-                    ?>
-                    <td><input type="image" src="../Bridges/vue/img/one.jpg" alt="submit"></td>
-                    <?php
+                    if ($villes->existe($i, $j)) {
+                        ?>
+                        <td><input type="image" src="../Bridges/vue/img/un.png" alt="submit"></td>
+                        <?php
+                    } else {
+                        ?>
+                        <td><label>vide<input type="text" alt="submit"></label></td>
+                        <?php
+                    }
                 }
                 ?>
             </tr>
@@ -62,7 +68,6 @@ $colonnes = 5;
         ?>
         </tbody>
     </form>
-
 
 
 </table>
