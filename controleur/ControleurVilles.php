@@ -5,9 +5,8 @@
  * Date: 10/12/2018
  * Time: 19:14
  */
-require_once PATH_VUE."/vue.php";
-require_once PATH_MODELE."/Modele.php";
-
+require_once PATH_VUE . "/vue.php";
+require_once PATH_MODELE . "/Modele.php";
 
 
 class ControleurVilles
@@ -26,5 +25,13 @@ class ControleurVilles
         $this->modele = $modele;
     }
 
+    /**
+     * Methode affichant les villes dans la vue
+     * @param $villes
+     */
+    public function afficheVilles(Villes $villes)
+    {
+
+    }
 
 }
