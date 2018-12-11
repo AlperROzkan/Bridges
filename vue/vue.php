@@ -6,18 +6,17 @@ class Vue
     /**
      * Gere l'authentification du jeu
      */
-    function demandeLogin()
-    {
+    function demandeLogin($error){
         require "Authentification.php";
     }
 
     /**
      * Gere le jeu en lui même
      */
-    function commenceJeu($bonjour)
-    {
+    function commenceJeu($bonjour){
         require "Jeu.php";
     }
+
 }
 
 ?>

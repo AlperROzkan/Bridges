@@ -3,6 +3,12 @@
 <body>
 <form method="post" action="../Bridges/index.php">
     <br>
+    <?php
+      if ($error) {
+        echo "<p> Erreur d'authentification. <p><br><br>";
+      }
+
+     ?>
     <label> Entrez votre pseudo :
         <input type="text" name="pseudo"/>
     </label>

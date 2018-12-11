@@ -26,14 +26,14 @@ class ControleurAuthentification
     {
       if (isset($_POST["deco"])){
         session_unset();
-        $this->vue->demandeLogin();
+        $this->vue->demandeLogin(false);
       } else if (isset($_SESSION['pseudo'])){
         $this->vue->commenceJeu();
       } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
           $_SESSION['pseudo'] = $_POST["pseudo"];
-          $this->vue->commenceJeu();
+          $this->vue->commenceJeu(false);
       } else {
-          $this->vue->demandeLogin();
+          $this->vue->demandeLogin(true);
         }
     }
 }
