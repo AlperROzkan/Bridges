@@ -76,10 +76,8 @@ class Villes
 
     function tmp(){
       $res = 0;
-      foreach($villes as $ligne){
-        foreach($ligne as $cle=>$valeur){
-          
-          $res++;
+      while (isset($villes[$i][0])) {
+        $res++;
       }
 
       return $res;
