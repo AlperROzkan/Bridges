@@ -24,7 +24,7 @@ $colonnes = $villes->maxY();
   for ($i = 0; $i < $lignes; $i++) {
     for ($j = 0; $j < $colonnes; $j++) {
         if ($villes->existe($i, $j)) {
-          echo "../Bridges/vue/img/".$i.$j.".png <br>";
+          echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png <br>";
         }
     }
   }
