@@ -61,7 +61,7 @@ class Villes
      * @return int
      */
     function maxX() {
-    
+
       return 6+1 ;
     }
 
@@ -78,7 +78,7 @@ class Villes
       $res = 0;
       foreach($villes as $ligne){
         foreach($ligne as $cle=>$valeur){
-          echo "<dt>$key</dt><dd>$value</dd>";
+          
           $res++;
       }
 
