@@ -57,7 +57,7 @@ $colonnes = $villes->maxY();
                         <?php
                     } else {
                         ?>
-                        <td><div></div></td>
+                        <td><input type="hidden"></td>
                         <?php
                     }
                 }
