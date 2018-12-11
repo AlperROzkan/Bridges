@@ -74,13 +74,5 @@ class Villes
         return 6+1;
     }
 
-    function tmp(){
-      $res = 0;
-      while ($villes[$i][0])) {
-        $res++;
-      }
-
-      return sizeof($villes[][]);
-    }
 
 }

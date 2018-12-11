@@ -7,7 +7,6 @@
  */
 // Initialisation des variables
 $lignes = $villes->maxX();
-echo $villes->tmp();
 $colonnes = $villes->maxY();
 ?>
 
