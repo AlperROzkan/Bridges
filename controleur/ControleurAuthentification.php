@@ -26,7 +26,7 @@ class ControleurAuthentification
      */
     function accueil()
     {
-      if (isset($_POST["deco"])){
+      if (isset($_POST["deco"]) || (empty($_POST["pseudo"]) && empty($_POST["mdp"]))){
         session_unset();
         $this->vue->demandeLogin(false);
       } else if (isset($_SESSION['pseudo'])){
