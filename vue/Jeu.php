@@ -53,7 +53,7 @@ $colonnes = $villes->maxY();
                     if ($villes->existe($i, $j)) {
                         ?>
 
-                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png";?>" alt="submit"></td>
+                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png\""." name=\"".$villes->getVille($i, $j)->getId()."\"";?> alt="submit"></td>
                         <?php
                     } else {
                         ?>
