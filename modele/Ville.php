@@ -80,18 +80,24 @@ class Ville
      * @param Ville $ville Ville liée avec this a qui on donne un nombre de pont
      * @param $nbPont
      */
-    function setNombrePontEntreVille(Ville $ville, $nbPont) {
+    function setNombrePontEntreVille(Ville $ville, $nbPont)
+    {
         $this->villesLiees[$ville->getId()] = $nbPont;
     }
 
-
     /**
      * Methode permettant de lier les villes entre elles
+     * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2
      * @param $villeALier Ville que l'on doit lier avec this.
      */
     function lieVille(Ville $villeALier)
     {
-
+        if ($this->getNombrePontEntreVille($villeALier) >= 2) {
+            echo "Trop de ponts entre les deux villes";
+        } else {
+            // On change le nombre de ponts entre les deux villes pour les deux villes
+            $this->setNombrePontEntreVille($villeALier, $this->getNombrePontEntreVille($villeALier) + 1);
+        }
     }
 }

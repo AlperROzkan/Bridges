@@ -26,16 +26,16 @@ class ControleurAuthentification
      */
     function accueil()
     {
-        if (isset($_POST["deco"])){
-        session_unset();
-        $this->vue->demandeLogin(false);
-      } else if (isset($_SESSION['pseudo'])){
-        $this->vue->commenceJeu($this->villes);
-      } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
-        $_SESSION['pseudo'] = $_POST["pseudo"];
-        $this->vue->commenceJeu($this->villes);
-      } else if (!isset($_SESSION['pseudo']) && (!empty($_POST["pseudo"]) || !empty($_POST["mdp"]))) {
-          $this->vue->demandeLogin(true);
+        if (isset($_POST["deco"])) {
+            session_unset();
+            $this->vue->demandeLogin(false);
+        } else if (isset($_SESSION['pseudo'])) {
+            $this->vue->commenceJeu($this->villes);
+        } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
+            $_SESSION['pseudo'] = $_POST["pseudo"];
+            $this->vue->commenceJeu($this->villes);
+        } else if (!isset($_SESSION['pseudo']) && (!empty($_POST["pseudo"]) || !empty($_POST["mdp"]))) {
+            $this->vue->demandeLogin(true);
         } else {
             $this->vue->demandeLogin(false);
 

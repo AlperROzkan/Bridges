@@ -18,7 +18,7 @@ class Routeur
      */
     public function routerRequete()
     {
-            $this->ControleurAuthentification->accueil();
+        $this->ControleurAuthentification->accueil();
     }
 }
 

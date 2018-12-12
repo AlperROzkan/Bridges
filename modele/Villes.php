@@ -57,21 +57,48 @@ class Villes
     //rajout d'éventuelles méthodes
 
     /**
+     * Previent si deux villes sont liables ou non
+     * @param $iA : Abscisse d'une ville A
+     * @param $jA : Ordonnée d'une ville A
+     * @param $iB : Abscisse d'une ville B
+     * @param $jB : Ordonnée d'une ville A
+     * @return bool True si les deux villes sont liables, false sinon
+     */
+    function liable($iA, $jA, $iB, $jB)
+    {
+        // On regarde si les deux villes données existent
+        if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
+            // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes
+            if (($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) {
+                // TODO Il faudra aussi verifier si il y a une ville entre les deux villes que l'on veut lier
+                return true;
+            }
+        } // Les deux deux villes ne peuvent pas être égales
+        elseif ($iA == $iB && $jA == $jB) {
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Retourne un entier qui donne le maximum des abscisses des villes
      * @return int
      */
-    function maxX() {
-
-      return 6+1 ;
+    function maxX()
+    {
+        // TODO A ameliorer
+        return 6 + 1;
     }
 
     /**
      * Retourne un entier qui donne le maximum des ordonnées des villes
      * @return int
      */
-    function maxY() {
+    function maxY()
+    {
         // TODO A ameliorer
-        return 6+1;
+        return 6 + 1;
     }
 
 
