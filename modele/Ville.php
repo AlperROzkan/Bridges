@@ -66,17 +66,32 @@ class Ville
     //il faut ici implémenter les méthodes qui permettent de lier des villes entre elles, ...
 
     /**
+     * Donne le nombre de pont entre this et la ville en parametre
+     * @param Ville $ville Ville liée avec this avec laquelle on veut compter le nombre de ponts
+     * @return int Le nombre de ponts entre deux villes
+     */
+    function getNombrePontEntreVille(Ville $ville)
+    {
+        return $this->villesLiees[$ville->getId()];
+    }
+
+    /** Permet de donner un nombre de pont entre deux villes
+     * POSTCONDITION : Le nombre de ponts doit être inférieur a 2 a la fin
+     * @param Ville $ville Ville liée avec this a qui on donne un nombre de pont
+     * @param $nbPont
+     */
+    function setNombrePontEntreVille(Ville $ville, $nbPont) {
+        $this->villesLiees[$ville->getId()] = $nbPont;
+    }
+
+
+    /**
      * Methode permettant de lier les villes entre elles
      * postcondition : nombre de ponts <= 2
      * @param $villeALier Ville que l'on doit lier avec this.
      */
-    function lieVille(Ville $villeALier) {
-        // Respect des instructions
-        if (!$this->getNombrePonts()>2) {
-            // TODO : Quelquechose d'élégant pour dire a l'utilisateur qu'il essaye de lier beaucoup trop de villes en même temps
-        }
-        else {
-            $this->villesLiees[$this->getId()] = $villeALier->getId();
-        }
+    function lieVille(Ville $villeALier)
+    {
+
     }
 }
