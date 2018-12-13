@@ -11,13 +11,14 @@ class Vue
     }
 
     /**
-     * Gere le jeu en lui même
-     * @param $villes
+     * Commence une partie
+     * @param $villes : villes du jeu
      */
     function commenceJeu($villes)
     {
         require "Jeu.php";
     }
+
 
 }
 

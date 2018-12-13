@@ -52,7 +52,6 @@ $colonnes = $villes->maxY();
                 for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
-
                         <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png\""." name=\"".$villes->getVille($i, $j)->getId()."\"";?> alt="submit"></td>
                         <?php
                     } else {

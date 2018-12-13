@@ -34,5 +34,12 @@ class ControleurVille
         $this->villes = $villes;
     }
 
+    /**
+     * Methode qui se charge de lier toutes les villes de $this->villes en utilisant leur attribut "villesLiees"
+     */
+    public function lierLesVilles(){
+
+    }
+
 
 }

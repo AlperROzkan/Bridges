@@ -86,6 +86,14 @@ class Ville
     }
 
     /**
+     * Retourne le tableau associatif des villes liees de this
+     * @return $this->villesLiees
+     */
+    function getVillesLiees() {
+        return $this->villesLiees;
+    }
+
+    /**
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2
