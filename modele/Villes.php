@@ -129,10 +129,9 @@ class Villes
                 // var_dump($ville);
             }
         }
-        
-        var_dump($ponts);
         return $ponts;
     }
+
 
     /**
      * Retourne un entier qui donne le maximum des abscisses des villes
