@@ -136,7 +136,7 @@ class Villes
       $res = array();
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
-          $coord = $this->findVilleById($ville);
+          $coord = $this->findVilleById($liaisons);
           var_dump($coord);
           echo "<br>";
           foreach ($ville as $villeliee) {
