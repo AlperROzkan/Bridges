@@ -46,7 +46,7 @@ class ControleurJeu
                 $this->vue->commenceJeu($_SESSION['villes']);
                 echo "<br><br>";
                 //var_dump($_SESSION['villes']->getPonts());
-                echo array(1,1);
+                var_dump(array(1,1));
                 unset($_SESSION['actif']);
 
             }
