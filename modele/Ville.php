@@ -76,16 +76,6 @@ class Ville
     }
 
     /**
-     * Donne le nombre de pont entre this et la ville en parametre
-     * @param Ville $ville Ville liée avec this avec laquelle on veut compter le nombre de ponts
-     * @return int Le nombre de ponts entre deux villes
-     */
-    function getNombrePontEntreVille(Ville $ville)
-    {
-        return $this->villesLiees[$ville->getId()];
-    }
-
-    /**
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2
