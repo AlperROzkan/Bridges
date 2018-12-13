@@ -132,12 +132,13 @@ class Villes
         return $ponts;
     }
 
-    /*function getPonts(){
+    function getPonts(){
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
           $i = 1;
           foreach ($ville as $villeliee) {
+            if($villeliee != null){
             $coordliee = $this->findVilleById($villeliee);
             if($coordliee[0] == $coord[0]){
               if(($coordliee[1] < $coord[1]){
@@ -168,9 +169,10 @@ class Villes
 
 
           }
+          }
       }
       return $res;
-    }*/
+    }
 
 
     /**
