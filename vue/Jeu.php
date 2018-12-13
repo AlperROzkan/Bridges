@@ -31,6 +31,11 @@ $colonnes = $villes->maxY();
     <input type="submit" name="deco" value="Deconnexion">
 </form>
 
+<?php //Tests a enlever plus tard
+    $villes->getToutesVillesLiees();
+
+?>
+
 <!-- Plateau de jeu -->
 <table>
     <!-- Le titre du jeu -->

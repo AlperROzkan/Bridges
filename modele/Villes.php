@@ -119,13 +119,19 @@ class Villes
      */
     function getToutesVillesLiees()
     {
-        $villesLieeUltime = array();
-        // On parcourt toutes les villes du plateau
-        foreach ($this->villes as $ville) {
-            $villesLieeUltime[$ville->getId()] = $ville->getVillesLiees();
+        // On parcourt toutes les elements de $this-villes
+        foreach ($this->villes as $element) {
+            // Une fois dedans on reparcourt les elements a l'interieur de ce tableau
+            foreach ($element as $ville) {
+                // On mets tous les ponts dans un tableau associatif
+                $ponts[$ville->getId()] = $ville->getVillesLiees();
+                // Pour voir toutes les villes en meme temps
+                // var_dump($ville);
+            }
         }
-        var_dump($villesLieeUltime);
-        return $villesLieeUltime;
+        
+        var_dump($ponts);
+        return $ponts;
     }
 
     /**

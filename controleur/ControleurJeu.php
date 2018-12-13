@@ -43,8 +43,9 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                var_dump($this->villes->getToutesVillesLiees());
                 $this->vue->commenceJeu($_SESSION['villes']);
+                echo "<br><br>";
+
                 unset($_SESSION['actif']);
 
             }
