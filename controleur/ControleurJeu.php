@@ -43,7 +43,7 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                $_SESSION['villes']->getPonts();
+              //  $_SESSION['villes']->getPonts();
 
 
 
