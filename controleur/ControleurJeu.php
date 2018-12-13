@@ -24,22 +24,25 @@ class ControleurJeu
 
     function selection()
     {
+        if(!isset($_SESSION['villes'])){
+            $_SESSION['villes'] = $this->villes;
+        }
         if (isset($_POST["deco"])) {
             session_unset();
             $this->vue->demandeLogin(false);
         } else if (!isset($_POST['villeId'])) {
-            $this->vue->commenceJeu($this->villes);
+            $this->vue->commenceJeu($_SESSION['villes']);
         } else {
             if (!isset($_SESSION['actif'])) {
-                $this->vue->commenceJeu($this->villes);
+                $this->vue->commenceJeu($_SESSION['villes']);
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
-                $this->villes->getVilleById($_SESSION['actif'])->lieVille($this->villes->getVilleById($_POST['villeId']));
-                $this->villes->getVilleById($_POST['villeId'])->lieVille($this->villes->getVilleById($_SESSION['actif']));
-                var_dump($this->villes->getVilleById($_POST['villeId']));
+                $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
+                $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                var_dump($_SESSION['villes']->getVilleById($_POST['villeId']));
                 echo "<br><br>";
-                var_dump($this->villes->getVilleById($_SESSION['actif']));
-                $this->vue->commenceJeu($this->villes);
+                var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                $this->vue->commenceJeu($_SESSION['villes']);
                 unset($_SESSION['actif']);
 
             }
