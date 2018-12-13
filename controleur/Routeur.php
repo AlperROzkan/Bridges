@@ -1,5 +1,6 @@
 <?php
 require_once 'ControleurAuthentification.php';
+require_once 'ControleurJeu.php';
 
 /**
  * Classe qui route les requetes
@@ -7,10 +8,13 @@ require_once 'ControleurAuthentification.php';
 class Routeur
 {
     private $ControleurAuthentification;
+    private $ControleurJeu;
+
 
     function __construct()
     {
         $this->ControleurAuthentification = new ControleurAuthentification();
+        $this->ControleurJeu = new ControleurJeu();
     }
 
     /**
@@ -18,7 +22,12 @@ class Routeur
      */
     public function routerRequete()
     {
-        $this->ControleurAuthentification->accueil();
+        if(isset($_SESSION['pseudo'])){
+            $this->ControleurJeu->selection();            
+            
+        } else {
+            $this->ControleurAuthentification->accueil();
+        }
     }
 }
 

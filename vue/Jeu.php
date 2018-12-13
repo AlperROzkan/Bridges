@@ -40,7 +40,7 @@ $colonnes = $villes->maxY();
     </tr>
     </thead>
 
-    <form method="post" action="">
+    <form method="post" action="../Bridges/index.php">
         <!-- La zone de jeu -->
         <tbody>
         <?php
@@ -52,7 +52,7 @@ $colonnes = $villes->maxY();
                 for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
-                        <td><input type="image" src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png\""." name=\"".$villes->getVille($i, $j)->getId()."\"";?> alt="submit"></td>
+                        <td><button type="submit" name="villeId" <?php echo "value=\"".$villes->getVille($i, $j)->getId()."\"";?>><img src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png\""." name=\"villeId\""."value=\"".$villes->getVille($i, $j)->getId()."\"";?>" alt=""></button></td>
                         <?php
                     } else {
                         ?>

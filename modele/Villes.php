@@ -145,5 +145,14 @@ class Villes
         return 6 + 1;
     }
 
-
+    function getVilleById($id){
+        for ($i = 0; $i < 7; $i++) {
+            for ($j = 0; $j < 7; $j++) {
+                if ($this->existe($i, $j) && $this->villes[$i][$j]->getId() == $id){
+                   return $this->villes[$i][$j];
+                }
+            }
+        }
+        return false;
+    }
 }
