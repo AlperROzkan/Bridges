@@ -157,6 +157,7 @@ class Villes
         }
         return false;
     }
+    
     //renvoie coordonnées de la ville de l'id entré en param
     function findVilleById($id){
         for ($i = 0; $i < 7; $i++) {
