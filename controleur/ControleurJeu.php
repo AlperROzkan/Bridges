@@ -21,32 +21,30 @@ class ControleurJeu
         $this->villes = new Villes();
     }
 
-    /**
-     * @throws TableAccesException
-     */
-    function selection(){
+
+    function selection()
+    {
         if (isset($_POST["deco"])) {
             session_unset();
             $this->vue->demandeLogin(false);
-        } else if(!isset($_POST['villeId'])){
+        } else if (!isset($_POST['villeId'])) {
             $this->vue->commenceJeu($this->villes);
         } else {
-            if (!isset($_SESSION['actif'])){
+            if (!isset($_SESSION['actif'])) {
                 $this->vue->commenceJeu($this->villes);
                 $_SESSION['actif'] = $_POST["villeId"];
-           } else {
-            $this->villes->getVilleById($_SESSION['actif'])->lieVille($this->villes->getVilleById($_POST['villeId']));
-            $this->villes->getVilleById($_POST['villeId'])->lieVille($this->villes->getVilleById($_SESSION['actif']));
-            var_dump($this->villes->getVilleById($_POST['villeId']));
-            echo "<br><br>";
-            var_dump($this->villes->getVilleById($_SESSION['actif']));
-            
-            $this->vue->commenceJeu($this->villes);
-            unset($_SESSION['actif']);
-            
-           }
-            
-           
+            } else {
+                $this->villes->getVilleById($_SESSION['actif'])->lieVille($this->villes->getVilleById($_POST['villeId']));
+                $this->villes->getVilleById($_POST['villeId'])->lieVille($this->villes->getVilleById($_SESSION['actif']));
+                var_dump($this->villes->getVilleById($_POST['villeId']));
+                echo "<br><br>";
+                var_dump($this->villes->getVilleById($_SESSION['actif']));
+                var_dump($this->villes->getToutesVillesLiees());
+                $this->vue->commenceJeu($this->villes);
+                unset($_SESSION['actif']);
+
+            }
+
 
         }
 

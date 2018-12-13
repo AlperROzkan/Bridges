@@ -107,7 +107,6 @@ class Ville
             // On change le nombre de ponts entre les deux villes pour les deux villes
             $this->setNombrePontEntreVille($villeALier, $this->getNombrePontEntreVille($villeALier) + 1);
             $this->nombrePonts++;
-
         }
     }
 }

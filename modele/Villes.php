@@ -85,6 +85,7 @@ class Villes
         } else {
             return false;
         }
+        return false;
     }
 
     /**
@@ -114,9 +115,10 @@ class Villes
 
     /**
      * Retourne toutes les villes liees entre elles
-     * @return $villesLieeUltime : tableau associatif pour lequel l'id d'une ville ammene a un autre tableau associatiqui contient toutes les villes liees a la ville cible
+     * @return array : tableau associatif pour lequel l'id d'une ville ammene a un autre tableau associatif qui contient toutes les villes liees a la ville cible
      */
-    function getToutesVillesLiees() {
+    function getToutesVillesLiees()
+    {
         $villesLieeUltime = array();
         // On parcourt toutes les villes du plateau
         foreach ($this->villes as $ville) {
