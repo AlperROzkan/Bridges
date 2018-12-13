@@ -133,13 +133,15 @@ class Villes
     }
 
     function getPonts(){
+      $res = array();
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
-          $i = 1;
           foreach ($ville as $villeliee) {
+            $i = 1;
             if($villeliee != null){
-              $res += array(1,1);
+              array_push($res,array($i,$i));
+              $i++;
             }
           }
       }

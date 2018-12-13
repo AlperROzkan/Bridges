@@ -43,11 +43,7 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                $res = array();
-                $res += array(array(1,1));
-                array_push($res,array(2,2));
-
-                var_dump($res);
+                var_dump($_SESSION['villes']->getPonts());
 
 
 
