@@ -141,7 +141,7 @@ class Villes
             $i = 1;
             if($villeliee != null){
               $coordliee = $this->findVilleById($villeliee);
-              echo $coordliee;
+              var_dump($coordliee);
               if($coordliee[0] == $coord[0]){
                 array_push($res,array(111,111));
                 $i++;
