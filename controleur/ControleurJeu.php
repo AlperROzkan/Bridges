@@ -45,7 +45,7 @@ class ControleurJeu
                 echo "<br><br>";
                 $res = array();
                 $res += array(array(1,1));
-                $res += array(array(2,2));
+                $res += array(2,2);
 
                 var_dump($res);
 
