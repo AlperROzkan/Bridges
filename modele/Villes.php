@@ -137,12 +137,37 @@ class Villes
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
+
           foreach ($ville as $villeliee) {
             $i = 1;
             if($villeliee != null){
-              array_push($res,array($i,$i));
-              $i++;
+            $coordliee = $this->findVilleById($villeliee);
+            if($coordliee[0] == $coord[0]){
+              if(($coordliee[1] < $coord[1]){
+                while ($coordliee[1]+$i < $coord[1]){
+                  array_push($res,array($coordliee[0],$coordliee[1]+$i));
+                  $i++;
+                }
+              } else {
+                  while ($coordliee[1]-$i > $coord[1]){
+                    array_push($res,array($coordliee[0],$coordliee[1]-$i));
+                    $i--;
+                  }
+                }
+            } else {
+              if(($coordliee[0] < $coord[0]){
+                while ($coordliee[0]+$i < $coord[0]){
+                  array_push($res,array($coordliee[0]+$i,$coordliee[1]));
+                  $i++;
+                }
+              } else {
+                  while ($coordliee[0]-$i > $coord[0]){
+                    array_push($res,array($coordliee[0]-$i,$coordliee[1]));
+                    $i--;
+                  }
+                }
             }
+          }
           }
       }
       return $res;
