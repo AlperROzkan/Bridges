@@ -57,20 +57,50 @@ class Villes
     //rajout d'éventuelles méthodes
 
     /**
+     * Indique si il y a une ville entre les deux villes données en paramètres
+     * @param $iA : Abscisse d'une ville A
+     * @param $jA : Ordonnée d'une ville A
+     * @param $iB : Abscisse d'une ville B
+     * @param $jB : Ordonnée d'une ville B
+     * @return bool True si il y a une ville entre les deux villes, False si il n'y en a pas
+     */
+    private function entreDeuxVilles($iA, $jA, $iB, $jB)
+    {
+        // Si les deux villes sont sur la même abscisse
+        if ($iA == $iB && $jA != $jB) {
+            // On parcourt la ligne jusqu'a la ville que l'on veut lier
+            for ($j = 0; $j < $jB; $j++) {
+                // On regarde si il y a une ville sur le chemin
+                if ($this->existe($iA, $j))
+                    return true;
+            }
+        } // Si les deux villes sont sur la même ordonnée
+        elseif ($iA != $iB && $jA == $jB) {
+            // On parcourt la colonne jusqu'a la ville que l'on veut lier
+            for ($i = 0; $i < $iB; $i++) {
+                // On regarde si il y a une ville sur le chemin
+                if ($this->existe($i, $jA))
+                    return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Previent si deux villes sont liables ou non
      * @param $iA : Abscisse d'une ville A
      * @param $jA : Ordonnée d'une ville A
      * @param $iB : Abscisse d'une ville B
-     * @param $jB : Ordonnée d'une ville A
+     * @param $jB : Ordonnée d'une ville B
      * @return bool True si les deux villes sont liables, false sinon
      */
     function liable($iA, $jA, $iB, $jB)
     {
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
-            // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes
-            if (($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) {
-                // TODO Il faudra aussi verifier si il y a une ville entre les deux villes que l'on veut lier
+            // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
+            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA,$jA,$iB,$jB)) {
                 return true;
             }
         } // Les deux deux villes ne peuvent pas être égales
