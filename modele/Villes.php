@@ -139,36 +139,8 @@ class Villes
           $i = 1;
           foreach ($ville as $villeliee) {
             if($villeliee != null){
-            $coordliee = $this->findVilleById($villeliee);
-            if($coordliee[0] == $coord[0]){
-              if(($coordliee[1] < $coord[1]){
-                while ($coordliee[1]+$i < $coord[1]){
-                  $res += array($coordliee[0],$coordliee[1]+$i);
-                  $i++;
-                }
-              } else {
-                  while ($coordliee[1]-$i > $coord[1]){
-                    $res += array($coordliee[0],$coordliee[1]-$i);
-                    $i--;
-                  }
-                }
-            } else {
-              if(($coordliee[0] < $coord[0]){
-                while ($coordliee[0]+$i < $coord[0]){
-                  $res += array($coordliee[0]+$i,$coordliee[1]);
-                  $i++;
-                }
-              } else {
-                  while ($coordliee[0]-$i > $coord[0]){
-                    $res += array($coordliee[0]-$i,$coordliee[1]);
-                    $i--;
-                  }
-                }
+              $res += array(1,1);
             }
-
-
-
-          }
           }
       }
       return $res;
