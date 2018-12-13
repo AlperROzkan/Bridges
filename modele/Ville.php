@@ -65,6 +65,16 @@ class Ville
 
     //il faut ici implémenter les méthodes qui permettent de lier des villes entre elles, ...
 
+
+
+    /**
+     * Retourne le tableau associatif des villes liees de this
+     * @return $this->villesLiees
+     */
+    function getVillesLiees() {
+        return $this->villesLiees;
+    }
+
     /**
      * Donne le nombre de pont entre this et la ville en parametre
      * @param Ville $ville Ville liée avec this avec laquelle on veut compter le nombre de ponts
@@ -76,14 +86,6 @@ class Ville
     }
 
     /**
-     * Retourne le tableau associatif des villes liees de this
-     * @return $this->villesLiees
-     */
-    function getVillesLiees() {
-        return $this->villesLiees;
-    }
-
-    /**
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2
@@ -91,11 +93,12 @@ class Ville
      */
     function lieVille(Ville $villeALier)
     {
-        if ($this->getNombrePontEntreVille($villeALier) >= 2) {
+
+        if ($this->villesLiees[$villeALier->getId()] >= 2) {
             echo "Trop de ponts entre les deux villes";
         } else {
             // On change le nombre de ponts entre les deux villes pour les deux villes
-            $this->villesLiees[$villeALier->getId()] = $this->getNombrePontEntreVille($villeALier)+1;
+            $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()]+1;
             $this->nombrePonts++;
         }
     }
