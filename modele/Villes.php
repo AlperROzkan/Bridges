@@ -137,14 +137,12 @@ class Villes
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
+          var_dump($coord);
+          echo "<br>";
           foreach ($ville as $villeliee) {
             $i = 1;
             if($villeliee != null){
               $coordliee = $this->findVilleById($villeliee);
-              var_dump($coordliee);
-              echo "<br>";
-              var_dump($coord);
-              echo "<br>";
               if($coordliee[0] == $coord[0]){
                 array_push($res,array(111,111));
                 $i++;
