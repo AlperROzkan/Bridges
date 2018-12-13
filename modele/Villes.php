@@ -124,6 +124,7 @@ class Villes
         foreach ($this->villes as $ville) {
             $villesLieeUltime[$ville->getId()] = $ville->getVillesLiees();
         }
+        var_dump($villesLieeUltime);
         return $villesLieeUltime;
     }
 
@@ -147,22 +148,34 @@ class Villes
         return 6 + 1;
     }
 
-    function getVilleById($id){
+    /**
+     * Donne les coordonées d'une ville a partir de son id
+     * @param $id : Id d'une ville
+     * @return bool|array Renvoie false si il n'y a pas d'id correspondant a une ville, un array avec les coordonées si l'id correspond a une ville
+     */
+    function getVilleById($id)
+    {
         for ($i = 0; $i < 7; $i++) {
             for ($j = 0; $j < 7; $j++) {
-                if ($this->existe($i, $j) && $this->villes[$i][$j]->getId() == $id){
-                   return $this->villes[$i][$j];
+                if ($this->existe($i, $j) && $this->villes[$i][$j]->getId() == $id) {
+                    return $this->villes[$i][$j];
                 }
             }
         }
         return false;
     }
-    //renvoie coordonnées de la ville de l'id entré en param
-    function findVilleById($id){
+
+    /**
+     * Renvoie coordonnées de la ville de l'id entré en param
+     * @param $id
+     * @return array|bool
+     */
+    function findVilleById($id)
+    {
         for ($i = 0; $i < 7; $i++) {
             for ($j = 0; $j < 7; $j++) {
-                if ($this->existe($i, $j) && $this->villes[$i][$j]->getId() == $id){
-                   return array($i,$j);
+                if ($this->existe($i, $j) && $this->villes[$i][$j]->getId() == $id) {
+                    return array($i, $j);
                 }
             }
         }
