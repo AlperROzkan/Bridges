@@ -133,6 +133,7 @@ class Villes
     }
 
     function getPonts(){
+      $res = array(0,0);
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
