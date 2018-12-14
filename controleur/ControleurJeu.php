@@ -41,21 +41,21 @@ class ControleurJeu
             } else {
                 // On verifie si les deux villes sont liables
                 if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1], $_SESSION['villes'])) {
+                  var_dump($_SESSION['actif']);
+                  echo "<br>";
+                  var_dump($_POST['villeId']);
+                  echo "<br>";
+                  var_dump($_SESSION['villes']->perdu($_SESSION['actif'], $_POST['villeId']));
+                  echo "<br>";
+
+                  if ($_SESSION['villes']->perdu($_SESSION['actif'], $_POST['villeId'])){
+                      echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                      $this->vue->resultat(false);
+                  }
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
-                    var_dump($_SESSION['actif']);
-                    echo "<br>";
-                    var_dump($_POST['villeId']);
-                    echo "<br>";
-                    var_dump($_SESSION['villes']->perdu($_SESSION['actif'], $_POST['villeId']));
-                    echo "<br>";
-
-                    if ($_SESSION['villes']->perdu($_SESSION['actif'], $_POST['villeId'])){
-                        echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
-                        $this->vue->resultat(false);
-                    }
-                    echo "<br> Les deux villes ne sont pas liables <br>";
+                  echo "<br> Les deux villes ne sont pas liables <br>";
                 }
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
