@@ -169,7 +169,7 @@ class Villes
                 $villeCoord = $this->findVilleById($ville);
                 $nbponts = $liaisons[$l];
                 echo "nbponts : ";
-                var_dump($nbponts);
+                var_dump($nbponts[$ville]);
                 echo "<br>";
                 //on test si on est sur la mm ligne
                 if ($villeCoord[0] == $coord[0]) {
