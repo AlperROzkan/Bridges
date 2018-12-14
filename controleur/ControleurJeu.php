@@ -45,10 +45,10 @@ class ControleurJeu
                   var_dump($_SESSION['villes']->perdu($_SESSION['villes']->findVilleById($_SESSION['actif']),$_SESSION['villes']->findVilleById($_POST['villeId'])));
                   echo "<br>";
 
-                  if ($_SESSION['villes']->perdu($_SESSION['villes']->findVilleById($_SESSION['actif']),$_SESSION['villes']->findVilleById($_POST['villeId']))){
+                  /*if ($_SESSION['villes']->perdu($_SESSION['villes']->findVilleById($_SESSION['actif']),$_SESSION['villes']->findVilleById($_POST['villeId']))){
                       echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
                       $this->vue->resultat(false);
-                  }
+                  }*/
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
