@@ -287,5 +287,14 @@ class Villes
       return $res;
     }
 
+    function perdu($ville1, $ville2){
+      $res = false;
+      if ($ville1->getNombrePonts() == $ville1->getNombrePontsMax() || $ville2->getNombrePonts() == $ville2->getNombrePontsMax() || $ville1->villesLiees[$ville2->getId()] >= 2){
+        $res = true;
+      }
+
+      return $res;
+    }
+
 
 }

@@ -44,12 +44,15 @@ class ControleurJeu
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
+                    if ($_SESSION['villes']->perdu($_SESSION['actif'], $_POST['villeId'])){
+                        $this->vue->resultat(false);
+                    }
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
                   $this->vue->resultat(true);
-                } 
+                }
                 else {
                   $this->vue->commenceJeu($_SESSION['villes']);
                 }
