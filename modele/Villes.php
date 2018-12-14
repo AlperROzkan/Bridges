@@ -176,7 +176,7 @@ class Villes
                 while ($villeCoord[1] < $coord[1]-1) {
                   $villeCoord[1] ++;
                   if (!in_array($villeCoord, $res)){
-                    $res[] = $villeCoord;
+                    $res[] = $villeCoord+"h1";
                   }
                 }
               }
@@ -191,7 +191,7 @@ class Villes
                 while ($villeCoord[0] < $coord[0]-1) {
                   $villeCoord[0] ++;
                   if (!in_array($villeCoord, $res)){
-                    $res[] = $villeCoord;
+                    $res[] = $villeCoord+"v1";
                   }
 
                 }

@@ -59,9 +59,13 @@ $colonnes = $villes->maxY();
                         ?>
                         <td><button type="submit" name="villeId" <?php echo "value=\"".$villes->getVille($i, $j)->getId()."\"";?>><img src="<?php echo "../Bridges/vue/img/".$villes->getVille($i, $j)->getNombrePontsMax().".png\""." name=\"villeId\""."value=\"".$villes->getVille($i, $j)->getId()."\"";?>" alt=""></button></td>
                         <?php
-                    } else if (in_array(array($i,$j), $villes->getPonts())) {
+                    } else if (in_array(array($i,$j,"h1"), $villes->getPonts())) {
                         ?>
-                        <td>hiboux</td>
+                        <td><input type="image" src="../Bridges/vue/img/h1.png" disabled></td>
+                        <?php
+                    } else if (in_array(array($i,$j,"v1"), $villes->getPonts())) {
+                        ?>
+                        <td><input type="image" src="../Bridges/vue/img/v1.png" disabled></td>
                         <?php
                     }
 
