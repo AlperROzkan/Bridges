@@ -104,7 +104,7 @@ class Villes
                 // On regarde si il y a une ville sur le chemin
                 if ($this->existe($i, $jA)) {
                     return true;
-                }  
+                }
             }
         } else {
             return false;
@@ -168,13 +168,17 @@ class Villes
             echo "coord : ";
             var_dump($coord);
             echo "<br>";
-            
+
             $villesliees = array_keys($liaisons[$l]);
             echo "villesliees : ";
             var_dump($villesliees);
             echo "<br>";
-            
-                    
+            foreach ($villesliees as $ville) {
+              echo "ville : ";
+              var_dump($ville);
+              echo "<br>";
+            }
+
         }
       return $res;
     }
