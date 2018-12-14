@@ -160,9 +160,10 @@ class Villes
         $res = array();
         $liaisons = $this->getToutesVillesLiees();
         for($l = 0; $l < sizeof($liaisons); $l++ ){
-            $coord = $this->findVilleById($l);
+
             $villesliees = array_keys($liaisons[$l]);
             foreach ($villesliees as $ville) {
+              $coord = $this->findVilleById($l);
               $villeCoord = $this->findVilleById($ville);
               //on test si on est sur la mm ligne
               if ($villeCoord[0] == $coord[0]) {
