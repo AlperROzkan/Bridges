@@ -49,9 +49,11 @@ class ControleurJeu
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
                   $this->vue->resultat(true);
-                } else {
+                } else if (!$this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1], $_SESSION['villes'])) {
+                  $this->vue->resultat(false);
+                }
+                else {
                   $this->vue->commenceJeu($_SESSION['villes']);
-
                 }
                 unset($_SESSION['actif']);
 
