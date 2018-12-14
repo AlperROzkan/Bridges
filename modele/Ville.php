@@ -110,6 +110,7 @@ class Ville
                 echo "villeLiees de this";
                 echo "<br>";
                 var_dump($this->villesLiees[$villeALier->getId()]);
+                echo "<br>";
                 echo "villeLiees de villeAlier";
                 var_dump($villeALier->getVillesLiees()[$this->getId()]);
                 echo "<br>";
