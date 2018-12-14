@@ -95,6 +95,11 @@ class Villes
             for ($j = $jA + 1; $j < $jB - 1; $j++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
                 if ($this->existe($iA, $j) || in_array(array($iA,$j,"h1"), $this->getPonts()) || in_array(array($iA,$j,"h2"), $this->getPonts())) {
+                    echo "PONT : ";
+                    var_dump(in_array(array($iA,$j,"h1"), $this->getPonts()));
+                    echo "<br>";
+                    var_dump(in_array(array($iA,$j,"h2"), $this->getPonts()));
+
                     return true;
                 }
             }
