@@ -159,25 +159,11 @@ class Villes
     function getPonts(){
         $res = array();
         $liaisons = $this->getToutesVillesLiees();
-        echo "liaisons : ";
-        var_dump($liaisons);
-        echo "<br>";
-
         for($l = 0; $l < sizeof($liaisons); $l++ ){
             $coord = $this->findVilleById($l);
-            echo "coord : ";
-            var_dump($coord);
-            echo "<br>";
-
             $villesliees = array_keys($liaisons[$l]);
-            /*echo "villesliees : ";
-            var_dump($villesliees);
-            echo "<br>";*/
             foreach ($villesliees as $ville) {
               $villeCoord = $this->findVilleById($ville);
-              echo "villecoord : ";
-              var_dump($villeCoord);
-              echo "<br>";
               //on test si on est sur la mm ligne
               if ($villeCoord[0] == $coord[0]) {
                 if ($villeCoord[1] > $coord[1]) {
@@ -188,7 +174,9 @@ class Villes
                 }
                 while ($villeCoord[1] < $coord[1]-1) {
                   $villeCoord[1] ++;
-                  $res[] = $villeCoord;
+                  if (!in_array($villeCoord, $res)){
+                    $res[] = $villeCoord;
+                  }
                 }
               }
               //si on est sur la mm colonne
@@ -201,9 +189,8 @@ class Villes
                 }
                 while ($villeCoord[0] < $coord[0]-1) {
                   $villeCoord[0] ++;
-                  $res[] = $villeCoord;
-                  if (in_array($villeCoord, $res)){
-                    echo "TRUE";
+                  if (!in_array($villeCoord, $res)){
+                    $res[] = $villeCoord;
                   }
 
                 }
@@ -211,6 +198,9 @@ class Villes
             }
 
         }
+      echo "res : ";
+      var_dump($res);
+      echo "<br>";
       return $res;
     }
 
