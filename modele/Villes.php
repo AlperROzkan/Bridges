@@ -177,11 +177,21 @@ class Villes
               $villeCoord = $this->findVilleById($ville);
               echo "villecoord : ";
               var_dump($villeCoord);
-              echo "<br> villecoord 0 :";
-              var_dump ($villeCoord[0]);
               echo "<br>";
               if ($villeCoord[0] == $coord[0]) {
-                echo "meme ligne <br>";
+                if ($villeCoord[1] > $coord[1]) {
+                  //on fait en sorte d'avoir coord[1] > villeCoord[1]
+                  $tmp = $villeCoord ;
+                  $villeCoord = $coord;
+                  $coord = $tmp;
+                }
+                while ($villeCoord[1] < $coord[1]) {
+                  $villeCoord[1] ++;
+                  $res[] = $villeCoord;
+                  echo "\$res : ";
+                  var_dump($res);
+                  echo "<br>";
+                }
               }
             }
 
