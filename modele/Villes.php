@@ -170,12 +170,14 @@ class Villes
             echo "<br>";
 
             $villesliees = array_keys($liaisons[$l]);
-            echo "villesliees : ";
+            /*echo "villesliees : ";
             var_dump($villesliees);
-            echo "<br>";
+            echo "<br>";*/
             foreach ($villesliees as $ville) {
-              echo "ville : ";
-              var_dump($ville);
+              $villeCoord = $this->findVilleById($ville);
+
+              echo "villecoord : ";
+              var_dump($villeCoord);
               echo "<br>";
             }
 
