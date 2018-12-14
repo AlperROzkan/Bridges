@@ -198,9 +198,6 @@ class Villes
             }
 
         }
-      echo "res : ";
-      var_dump($res);
-      echo "<br>";
       return $res;
     }
 
