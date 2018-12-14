@@ -92,7 +92,7 @@ class Villes
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
-            for ($j = $jA + 1; $j < $jB - 1; $j++) {
+            for ($j = $jA + 1; $j < $jB; $j++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
                 echo "PONT : ";
                 var_dump(in_array(array($iA,$j,"h1"), $this->getPonts()));
@@ -106,7 +106,7 @@ class Villes
         } // Si les deux villes sont sur la même ordonnée
         elseif ($iA != $iB && $jA == $jB) {
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
-            for ($i = $iA + 1; $i < $iB - 1; $i++) {
+            for ($i = $iA + 1; $i < $iB; $i++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
                 echo "PONT : ";
                 var_dump(in_array(array($iA,$j,"h1"), $this->getPonts()));
