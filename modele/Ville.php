@@ -106,15 +106,6 @@ class Ville
                 // $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
                 $this->setVillesLiees($villeALier,$this->villesLiees[$villeALier->getId()] + 1);
                 //$villeALier->setVillesLiees($this, $villeALier->getVillesLiees($this->getId) + 1);
-                echo "<br><br> Vardump: <br><br>";
-                echo "villeLiees de this";
-                echo "<br>";
-                var_dump($this->villesLiees[$villeALier->getId()]);
-                echo "<br>";
-                echo "villeLiees de villeAlier";
-                var_dump($villeALier->getVillesLiees()[$this->getId()]);
-                echo "<br>";
-                echo "<br><br> Fin Vardump <br><br>";
             } else {
                 return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }
