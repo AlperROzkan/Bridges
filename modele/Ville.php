@@ -100,16 +100,17 @@ class Ville
             // On regarde si il y a trop de liens entre les deux villes
             if ($this->villesLiees[$villeALier->getId()] >= 2) {
                 // TODO : Indiquer au joueur qu'il a lié trop de ponts entre deux villes
-                return false; //il me semble qu'ici il faut renvoyer une exception qui fait perdre
+                echo "Trop de ponts entre les deux villes"; //il me semble qu'ici il faut renvoyer une exception qui fait perdre
             } // On verifie aussi si le nombre de ponts max n'est pas dépassé pour les villes
             else if ($this->nombrePonts + 1 <= $this->getNombrePontsMax() && $villeALier->nombrePonts + 1 <= $villeALier->getNombrePontsMax()) {
                 // On change le nombre de ponts entre les deux villes
 
                 $this->setVillesLiees($villeALier);
                 $villeALier->setVillesLiees($this);
+            } else {
+                return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }
         }
-        return true;
     }
 
 }
