@@ -44,8 +44,7 @@ class ControleurJeu
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                     $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
-                }
-                else {
+                } else {
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
                 echo "liaisons : ";
