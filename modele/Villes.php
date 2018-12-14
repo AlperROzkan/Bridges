@@ -66,7 +66,7 @@ class Villes
      * @param $jB : Ordonnée d'une ville B
      * @return bool True si il y a une ville ou pont entre les deux villes, False si il n'y en a pas
      */
-    private function entreDeuxVilles($iA, $jA, $iB, $jB)
+    private function entreDeuxVilles($iA, $jA, $iB, $jB, $villes)
     {
         // On réorganise afin que les points sont dans le bonne ordre et que la boucle for() pour les parcourir apres fonctionne bien
         if ($iA > $iB) {
@@ -97,9 +97,9 @@ class Villes
                 echo "PONT : ";
                 var_dump(array($iA,$j,"v1"));
                 echo "<br>";
-                var_dump($this->getPonts());
+                var_dump($villes->getPonts());
                 echo "<br>";
-                if ($this->existe($iA, $j) || in_array(array($iA,$j,"v1"), $this->getPonts()) || in_array(array($iA,$j,"v2"), $this->getPonts())) {
+                if ($this->existe($iA, $j) || in_array(array($iA,$j,"v1"), $villes->getPonts()) || in_array(array($iA,$j,"v2"), $villes->getPonts())) {
                     return true;
                 }
             }
@@ -108,7 +108,7 @@ class Villes
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
             for ($i = $iA + 1; $i < $iB; $i++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
-                if ($this->existe($i, $jA) || in_array(array($i,$jA,"h1"), $this->getPonts()) || in_array(array($i,$jA,"h2"), $this->getPonts())) {
+                if ($this->existe($i, $jA) || in_array(array($i,$jA,"h1"), $villes->getPonts()) || in_array(array($i,$jA,"h2"), $villes->getPonts())) {
                     return true;
                 }
             }
@@ -126,12 +126,12 @@ class Villes
      * @param $jB : Ordonnée d'une ville B
      * @return bool True si les deux villes sont liables, false sinon
      */
-    function liable($iA, $jA, $iB, $jB)
+    function liable($iA, $jA, $iB, $jB, $villes)
     {
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
             // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
-            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA, $jA, $iB, $jB)) {
+            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA, $jA, $iB, $jB, $villes)) {
                 return true;
             }
         } // Les deux deux villes ne peuvent pas être égales
