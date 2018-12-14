@@ -178,9 +178,9 @@ class Villes
               echo "villecoord : ";
               var_dump($villeCoord);
               echo "<br> villecoord 0 :";
-              var_dump ($villecoord[0]);
+              var_dump ($villeCoord[0]);
               echo "<br>";
-              if ($villecoord[0] == $coord[0]) {
+              if ($villeCoord[0] == $coord[0]) {
                 echo "meme ligne <br>";
               }
             }
