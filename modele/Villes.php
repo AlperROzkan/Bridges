@@ -9,11 +9,12 @@ class Villes
     function __construct()
     {
         // tableau représentatif d'un jeu qui servira à développer votre code
-        $this->villes[0][2] = new Ville("0", 3, 0);
+
+        $this->villes[0][0] = new Ville("0", 3, 0);
         $this->villes[0][6] = new Ville("1", 2, 0);
         $this->villes[3][0] = new Ville("2", 6, 0);
         $this->villes[3][5] = new Ville("3", 2, 0);
-        $this->villes[5][2] = new Ville("4", 1, 0);
+        $this->villes[5][1] = new Ville("4", 1, 0);
         $this->villes[5][6] = new Ville("5", 2, 0);
         $this->villes[6][0] = new Ville("6", 2, 0);
 
@@ -64,6 +65,7 @@ class Villes
      * @param $jA : Ordonnée d'une ville A
      * @param $iB : Abscisse d'une ville B
      * @param $jB : Ordonnée d'une ville B
+     * @param $villes : ensemble des villes durant le jeu
      * @return bool True si il y a une ville ou pont entre les deux villes, False si il n'y en a pas
      */
     private function entreDeuxVilles($iA, $jA, $iB, $jB, $villes)
@@ -94,11 +96,6 @@ class Villes
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
             for ($j = $jA + 1; $j < $jB; $j++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
-                echo "PONT : ";
-                var_dump(array($iA,$j,"v1"));
-                echo "<br>";
-                var_dump($villes->getPonts());
-                echo "<br>";
                 if ($this->existe($iA, $j) || in_array(array($iA,$j,"v1"), $villes->getPonts()) || in_array(array($iA,$j,"v2"), $villes->getPonts())) {
                     return true;
                 }
@@ -124,6 +121,7 @@ class Villes
      * @param $jA : Ordonnée d'une ville A
      * @param $iB : Abscisse d'une ville B
      * @param $jB : Ordonnée d'une ville B
+     * @param $villes : ensemble des villes durant le jeu
      * @return bool True si les deux villes sont liables, false sinon
      */
     function liable($iA, $jA, $iB, $jB, $villes)
@@ -276,4 +274,18 @@ class Villes
         }
         return false;
     }
+
+    function gagne(){
+      $res = true;
+      foreach ($this->villes as $element) {
+          foreach ($element as $ville) {
+            if ($ville->getNombrePonts() != $ville->getNombrePontsMax()) {
+              $res = false;
+            }
+          }
+      }
+      return res;
+    }
+
+    
 }

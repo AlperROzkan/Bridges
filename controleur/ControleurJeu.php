@@ -47,7 +47,9 @@ class ControleurJeu
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
                 $_SESSION['villes']->getPonts();
-
+                if ($_SESSION['villes']->gagne()){
+                  echo "GGGGGGGGGGGGGGGGGGGGG";
+                }
                 $this->vue->commenceJeu($_SESSION['villes']);
                 unset($_SESSION['actif']);
 
