@@ -42,7 +42,11 @@ class ControleurJeu
                 // On verifie si les deux villes sont liables
                 if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1], $_SESSION['villes'])) {
 
-                  var_dump($_SESSION['villes']->perdu($_SESSION['villes']->findVilleById($_SESSION['actif']),$_SESSION['villes']->findVilleById($_POST['villeId'])));
+                  echo "<br>";
+                  var_dump($this->villes->findVilleById($_SESSION['actif']));
+                  echo "<br>";
+                  var_dump($this->villes->findVilleById($_POST['villeId']));
+                  var_dump($_SESSION['villes']->perdu($this->villes->findVilleById($_SESSION['actif']),$this->villes->findVilleById($_POST['villeId'])));
                   echo "<br>";
 
                   /*if ($_SESSION['villes']->perdu($_SESSION['villes']->findVilleById($_SESSION['actif']),$_SESSION['villes']->findVilleById($_POST['villeId']))){
