@@ -107,10 +107,9 @@ class Ville
 
                 $this->setVillesLiees($villeALier);
                 $villeALier->setVillesLiees($this);
-            } else {
-                return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }
         }
+        return true;
     }
 
 }
