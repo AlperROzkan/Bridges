@@ -67,7 +67,7 @@ class Villes
      */
     private function entreDeuxVilles($iA, $jA, $iB, $jB)
     {
-        // On réorganise afin que les points sont dans le bonne ordre
+        // On réorganise afin que les points sont dans le bonne ordre et que la boucle for() pour les parcourir apres fonctionne bien
         if ($iA>$iB) {
             $tmp = $iA;
             $iA = $iB;

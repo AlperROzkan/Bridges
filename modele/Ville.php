@@ -88,7 +88,7 @@ class Ville
     /**
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
-     * postcondition : nombre de ponts <= 2
+     * postcondition : nombre de ponts <= 2, villesLiees mises a jour sur les deux villes
      * @param $villeALier Ville que l'on doit lier avec this.
      * @return int
      */
@@ -105,7 +105,9 @@ class Ville
                 // On change le nombre de ponts entre les deux villes
                 // $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
                 $this->setVillesLiees($villeALier,$this->villesLiees[$villeALier->getId()] + 1);
-                // $villeALier->setVillesLiees($this, $villeALier->getVillesLiees($this->getId) + 1);
+                //$villeALier->setVillesLiees($this, $villeALier->getVillesLiees($this->getId) + 1);
+                echo "<br><br> Vardump: <br><br>";
+                var_dump($this->villesLiees[$villeALier->getId()]);
             } else {
                 return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }
