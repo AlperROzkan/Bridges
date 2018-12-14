@@ -18,6 +18,11 @@ class Vue
     {
         require "Jeu.php";
     }
+
+    function resultat($gagne)
+    {
+        require "Resultat.php";
+    }
 }
 
 ?>
