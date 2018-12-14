@@ -178,6 +178,7 @@ class Villes
                   if (!in_array($villeCoord, $res)){
                     $villeCoord[] = "h1";
                     $res[] = $villeCoord;
+                    array_pop($villeCoord);
                   }
                 }
               }
@@ -194,6 +195,7 @@ class Villes
                   if (!in_array($villeCoord, $res)){
                     $villeCoord[] = "v1";
                     $res[] = $villeCoord;
+                    array_pop($villeCoord);
                   }
 
                 }
