@@ -101,7 +101,7 @@ class Villes
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
             // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
-            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA, $jA, $iB, $jB)) {
+            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB))) {
                 return true;
             }
         } // Les deux deux villes ne peuvent pas être égales
@@ -111,7 +111,6 @@ class Villes
         else {
             return false;
         }
-        return false;
     }
 
     /**
