@@ -37,7 +37,7 @@ class ControleurJeu
         } else {
             echo "getponts : ";
             var_dump($_SESSION['villes']->getPonts());
-            echo <br>;
+            echo "<br>";
             if (!isset($_SESSION['actif'])) {
                 $this->vue->commenceJeu($_SESSION['villes']);
                 $_SESSION['actif'] = $_POST["villeId"];
