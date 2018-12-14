@@ -104,7 +104,7 @@ class Ville
             } // On verifie aussi si le nombre de ponts max n'est pas dépassé pour les villes
             else if ($this->nombrePonts + 1 <= $this->getNombrePontsMax() && $villeALier->nombrePonts + 1 <= $villeALier->getNombrePontsMax()) {
                 // On change le nombre de ponts entre les deux villes
-                // $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
+
                 $this->setVillesLiees($villeALier);
                 $villeALier->setVillesLiees($this);
             } else {

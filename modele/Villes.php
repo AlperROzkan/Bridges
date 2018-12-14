@@ -167,6 +167,10 @@ class Villes
             foreach ($villesliees as $ville) {
                 $coord = $this->findVilleById($l);
                 $villeCoord = $this->findVilleById($ville);
+                $nbponts = $ville;
+                echo "nbponts : ";
+                var_dump($nbponts);
+                echo "<br>";
                 //on test si on est sur la mm ligne
                 if ($villeCoord[0] == $coord[0]) {
                     if ($villeCoord[1] > $coord[1]) {
