@@ -133,19 +133,21 @@ class Villes
         return $ponts;
     }
 
-    /*function getPonts(){
+    function getPonts(){
       $res = array();
       $liaisons = $this->getToutesVillesLiees();
       foreach ($liaisons as $ville) {
           $coord = $this->findVilleById($ville);
+          echo "coord : ";
           var_dump($ville);
           echo "<br>";
           foreach ($ville as $villeliee) {
             $i = 1;
             if($villeliee != null){
               $coordliee = $this->findVilleById($villeliee);
+              echo "coordliee : ";
               var_dump($coordliee);
-              echo "<br>"
+              echo "<br>";
               var_dump($coord);
               echo "<br>";
               if($coordliee[0] == $coord[0]){
@@ -158,7 +160,7 @@ class Villes
           }
       }
       return $res;
-    }*/
+    }
 
 
     /**
@@ -182,7 +184,7 @@ class Villes
     }
 
     /**
-     * Donne les coordonées d'une ville a partir de son id
+     * Donne une ville a partir de son id
      * @param $id : Id d'une ville
      * @return bool|Ville Renvoie false si il n'y a pas d'id correspondant a une ville, renvoie la ville sinon
      */
@@ -199,7 +201,7 @@ class Villes
     }
 
     /**
-     * Renvoie coordonnées de la ville de l'id entré en param
+     * Renvoie coordonnées de la ville à partir de l'id en param
      * @param $id
      * @return array|bool un tableau contenant les coordonées de la ville si reussi, false sinon
      */

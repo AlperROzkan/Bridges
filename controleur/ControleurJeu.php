@@ -42,16 +42,14 @@ class ControleurJeu
                 // On verifie si les deux villes sont liables
                 var_dump($this->villes->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
+                var_dump($this->villes->findVilleById($_SESSION['actif'])[0]);
+                var_dump($this->villes->findVilleById($_SESSION['actif'])[1]);
                 echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
-                echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId'])));
-                echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId'])));
+                var_dump($this->villes->findVilleById($_POST['villeId'])[0]);
+                var_dump($this->villes->findVilleById($_POST['villeId'])[1]);
                 echo "<br><br>";
 
-                if ($this->villes->liable($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[0], $this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[1], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[0], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[1])) {
+                if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1])) {
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                     $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
@@ -64,13 +62,9 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                //  $_SESSION['villes']->getPonts();
-
+                $_SESSION['villes']->getPonts();
 
                 $this->vue->commenceJeu($_SESSION['villes']);
-                echo "<br><br>";
-                //var_dump($_SESSION['villes']->getPonts());
-
                 unset($_SESSION['actif']);
 
             }
