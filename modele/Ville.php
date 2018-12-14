@@ -76,6 +76,16 @@ class Ville
     }
 
     /**
+     * Methode qui permet d'ajouter un element a $this->villesLiees
+     * @param $villeCible ville avec laquelle on fait un lien
+     * @param $nombrePonts le nombre de ponts avec cette ville
+     */
+    function setVillesLiees(Ville $villeCible, $nombrePonts) {
+        $this->villesLiees[$villeCible->getId()] = $nombrePonts;
+        $this->nombrePonts++;
+    }
+
+    /**
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2
@@ -90,12 +100,12 @@ class Ville
             if ($this->villesLiees[$villeALier->getId()] >= 2) {
                 // TODO : Indiquer au joueur qu'il a lié trop de ponts entre deux villes
                 echo "Trop de ponts entre les deux villes"; //il me semble qu'ici il faut renvoyer une exception qui fait perdre
-
             } // On verifie aussi si le nombre de ponts max n'est pas dépassé pour les villes
             else if ($this->nombrePonts + 1 <= $this->getNombrePontsMax() && $villeALier->nombrePonts + 1 <= $villeALier->getNombrePontsMax()) {
                 // On change le nombre de ponts entre les deux villes
-                $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
-                $this->nombrePonts++;
+                // $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
+                $this->setVillesLiees($villeALier,$this->villesLiees[$villeALier->getId()] + 1);
+                // $villeALier->setVillesLiees($this, $villeALier->getVillesLiees($this->getId) + 1);
             } else {
                 return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }

@@ -57,7 +57,8 @@ class Villes
     //rajout d'éventuelles méthodes
 
     /**
-     * Indique si il y a une ville entre les deux villes données en paramètres
+     * Indique si il y a une ville entre les deux villes données en paramètres.
+     * Il faudra faire attention a l'ordre des villes: le for ne sera pas le meme si la ville vient en premier ou en deuxieme place.
      * @param $iA : Abscisse d'une ville A
      * @param $jA : Ordonnée d'une ville A
      * @param $iB : Abscisse d'une ville B
@@ -66,6 +67,27 @@ class Villes
      */
     private function entreDeuxVilles($iA, $jA, $iB, $jB)
     {
+        // On réorganise afin que les points sont dans le bonne ordre
+        if ($iA>$iB) {
+            $tmp = $iA;
+            $iA = $iB;
+            $iB = $tmp;
+
+            $tmp = $jA;
+            $jA = $jB;
+            $jB = $tmp;
+        }
+
+        if($jA>$jB) {
+            $tmp = $iA;
+            $iA = $iB;
+            $iB = $tmp;
+
+            $tmp = $jA;
+            $jA = $jB;
+            $jB = $tmp;
+        }
+
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
@@ -100,8 +122,6 @@ class Villes
      */
     function liable($iA, $jA, $iB, $jB)
     {
-        var_dump($this->entreDeuxVilles($iA,$jA,$iB,$jB));
-        echo "<br><br>";
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
             // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
