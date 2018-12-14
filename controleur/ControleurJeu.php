@@ -46,9 +46,6 @@ class ControleurJeu
                 } else {
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
-                echo "liaisons : ";
-                var_dump($_SESSION['villes']->getToutesVillesLiees());
-                echo "<br>";
                 $_SESSION['villes']->getPonts();
 
                 $this->vue->commenceJeu($_SESSION['villes']);
