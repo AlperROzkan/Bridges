@@ -178,6 +178,7 @@ class Villes
               echo "villecoord : ";
               var_dump($villeCoord);
               echo "<br>";
+              //on test si on est sur la mm ligne
               if ($villeCoord[0] == $coord[0]) {
                 if ($villeCoord[1] > $coord[1]) {
                   //on fait en sorte d'avoir coord[1] > villeCoord[1]
@@ -185,8 +186,21 @@ class Villes
                   $villeCoord = $coord;
                   $coord = $tmp;
                 }
-                while ($villeCoord[1] < $coord[1]) {
+                while ($villeCoord[1] < $coord[1]-1) {
                   $villeCoord[1] ++;
+                  $res[] = $villeCoord;
+                }
+              }
+              //si on est sur la mm colonne
+              else {
+                if ($villeCoord[0] > $coord[0]) {
+                  //on fait en sorte d'avoir coord[1] > villeCoord[1]
+                  $tmp = $villeCoord ;
+                  $villeCoord = $coord;
+                  $coord = $tmp;
+                }
+                while ($villeCoord[0] < $coord[0]-1) {
+                  $villeCoord[0] ++;
                   $res[] = $villeCoord;
                   echo "\$res : ";
                   var_dump($res);
