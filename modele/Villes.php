@@ -175,10 +175,14 @@ class Villes
             echo "<br>";*/
             foreach ($villesliees as $ville) {
               $villeCoord = $this->findVilleById($ville);
-
               echo "villecoord : ";
               var_dump($villeCoord);
               echo "<br>";
+              echo $villecoord[0];
+              echo "<br>";
+              if ($villecoord[0] == $coord[0]) {
+                echo "meme ligne <br>";
+              }
             }
 
         }
