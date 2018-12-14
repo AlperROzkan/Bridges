@@ -201,7 +201,7 @@ class Villes
     /**
      * Renvoie coordonnées de la ville de l'id entré en param
      * @param $id
-     * @return array|bool
+     * @return array|bool un tableau contenant les coordonées de la ville si reussi, false sinon
      */
     function findVilleById($id)
     {

@@ -40,6 +40,8 @@ class ControleurJeu
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
                 // On verifie si les deux villes sont liables
+                var_dump($this->villes->getVilleById($_SESSION['actif']));
+                echo "<br><br>";
                 var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
                 echo "<br><br>";
                 var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
