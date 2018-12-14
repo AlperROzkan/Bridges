@@ -59,11 +59,11 @@ class ControleurJeu
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
 
-                var_dump($_SESSION['villes']->getVilleById($_POST['villeId']));
-                echo "<br><br>";
-                var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
-                echo "<br><br>";
-                //$_SESSION['villes']->getPonts();
+                //var_dump($_SESSION['villes']->getVilleById($_POST['villeId']));
+                //echo "<br><br>";
+                //var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                //echo "<br><br>";
+                $_SESSION['villes']->getPonts();
 
                 $this->vue->commenceJeu($_SESSION['villes']);
                 unset($_SESSION['actif']);

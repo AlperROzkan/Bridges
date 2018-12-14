@@ -137,31 +137,25 @@ class Villes
     }
 
     function getPonts(){
-      $res = array();
-      $liaisons = $this->getToutesVillesLiees();
-      foreach ($liaisons as $ville) {
-          $coord = $this->findVilleById($ville);
-          echo "coord : ";
-          var_dump($ville);
-          echo "<br>";
-          foreach ($ville as $villeliee) {
-            $i = 1;
-            if($villeliee != null){
-              $coordliee = $this->findVilleById($villeliee);
-              echo "coordliee : ";
-              var_dump($coordliee);
-              echo "<br>";
-              var_dump($coord);
-              echo "<br>";
-              if($coordliee[0] == $coord[0]){
-                array_push($res,array(111,111));
-                $i++;
-              } else {
-                array_push($res,array(555,555));
-              }
-            }
-          }
-      }
+        $res = array();
+        $liaisons = $this->getToutesVillesLiees();
+        echo "liaisons : ";
+        var_dump($liaisons);
+        echo "<br>";
+
+        for($l = 0; $l < sizeof($liaisons); $l++ ){
+            $coord = $this->findVilleById($l);
+            echo "coord : ";
+            var_dump($coord);
+            echo "<br>";
+            
+            $villesliees = array_keys($liaisons[$l]);
+            echo "villesliees : ";
+            var_dump($villesliees);
+            echo "<br>";
+            
+                    
+        }
       return $res;
     }
 
