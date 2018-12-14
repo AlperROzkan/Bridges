@@ -284,8 +284,8 @@ class Villes
             }
           }
       }
-      return res;
+      return $res;
     }
 
-    
+
 }
