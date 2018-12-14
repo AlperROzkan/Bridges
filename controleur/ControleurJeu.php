@@ -35,9 +35,6 @@ class ControleurJeu
         } else if (!isset($_POST['villeId'])) {
             $this->vue->commenceJeu($_SESSION['villes']);
         } else {
-            echo "getponts : ";
-            var_dump($_SESSION['villes']->getPonts());
-            echo "<br>";
             if (!isset($_SESSION['actif'])) {
                 $this->vue->commenceJeu($_SESSION['villes']);
                 $_SESSION['actif'] = $_POST["villeId"];
@@ -51,7 +48,9 @@ class ControleurJeu
                 else {
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
-
+                echo "liaisons : ";
+                var_dump($_SESSION['villes']->getToutesVillesLiees());
+                echo "<br>";
                 $_SESSION['villes']->getPonts();
 
                 $this->vue->commenceJeu($_SESSION['villes']);
