@@ -202,9 +202,10 @@ class Villes
                 while ($villeCoord[0] < $coord[0]-1) {
                   $villeCoord[0] ++;
                   $res[] = $villeCoord;
-                  echo "\$res : ";
-                  var_dump($res);
-                  echo "<br>";
+                  if (in_array($villeCoord, $res){
+                    echo "TRUE";
+                  }
+
                 }
               }
             }
