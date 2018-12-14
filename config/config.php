@@ -11,7 +11,7 @@ define("PATH_MODELE", HOME_SITE."/modele");
 
 // données pour la connexion au sgbd (Changer les X a chaque fois pour se connecter)
 define("HOST", "localhost");
-define("BD", "bridges");
-define("LOGIN", "root");
-define("PASSWORD", "mysql24passEz");
+define("BD", "E175980H");
+define("LOGIN", "E175980H");
+define("PASSWORD", "E175980H");
 ?>

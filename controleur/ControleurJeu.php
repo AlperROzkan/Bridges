@@ -40,6 +40,7 @@ class ControleurJeu
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
                 // On verifie si les deux villes sont liables
+                /*
                 var_dump($this->villes->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
                 var_dump($this->villes->findVilleById($_SESSION['actif'])[0]);
@@ -47,7 +48,7 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($this->villes->findVilleById($_POST['villeId'])[0]);
                 var_dump($this->villes->findVilleById($_POST['villeId'])[1]);
-                echo "<br><br>";
+                echo "<br><br>";*/
 
                 if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1])) {
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
@@ -62,7 +63,7 @@ class ControleurJeu
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-                $_SESSION['villes']->getPonts();
+                //$_SESSION['villes']->getPonts();
 
                 $this->vue->commenceJeu($_SESSION['villes']);
                 unset($_SESSION['actif']);

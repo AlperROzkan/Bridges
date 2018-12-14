@@ -69,18 +69,20 @@ class Villes
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
-            for ($j = 0; $j < $jB; $j++) {
+            for ($j = $jA+1; $j < $jB-1; $j++) {
                 // On regarde si il y a une ville sur le chemin
-                if ($this->existe($iA, $j))
+                if ($this->existe($iA, $j)) {
                     return true;
+                }
             }
         } // Si les deux villes sont sur la même ordonnée
         elseif ($iA != $iB && $jA == $jB) {
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
-            for ($i = 0; $i < $iB; $i++) {
+            for ($i = $iA+1; $i < $iB-1; $i++) {
                 // On regarde si il y a une ville sur le chemin
-                if ($this->existe($i, $jA))
+                if ($this->existe($i, $jA)) {
                     return true;
+                }  
             }
         } else {
             return false;
@@ -98,10 +100,12 @@ class Villes
      */
     function liable($iA, $jA, $iB, $jB)
     {
+        var_dump($this->entreDeuxVilles($iA,$jA,$iB,$jB));
+        echo "<br><br>";
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
             // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
-            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB))) {
+            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA,$jA,$iB,$jB)) {
                 return true;
             }
         } // Les deux deux villes ne peuvent pas être égales
