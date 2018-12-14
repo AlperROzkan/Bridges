@@ -80,9 +80,9 @@ class Ville
      * @param $villeCible ville avec laquelle on fait un lien
      * @param $nombrePonts le nombre de ponts avec cette ville
      */
-    function setVillesLiees(Ville $villeCible, $nombrePonts)
+    function setVillesLiees(Ville $villeCible)
     {
-        $this->villesLiees[$villeCible->getId()] = $nombrePonts;
+        $this->villesLiees[$villeCible->getId()] = $this->villesLiees[$villeCible->getId()] + 1;
         $this->nombrePonts++;
     }
 
