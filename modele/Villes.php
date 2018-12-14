@@ -177,8 +177,8 @@ class Villes
               $villeCoord = $this->findVilleById($ville);
               echo "villecoord : ";
               var_dump($villeCoord);
-              echo "<br>";
-              echo $villecoord[0];
+              echo "<br> villecoord 0 :";
+              var_dump ($villecoord[0]);
               echo "<br>";
               if ($villecoord[0] == $coord[0]) {
                 echo "meme ligne <br>";
