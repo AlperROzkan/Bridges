@@ -49,8 +49,10 @@ class ControleurJeu
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
                   $this->vue->resultat(true);
+                } else {
+                  $this->vue->commenceJeu($_SESSION['villes']);
+
                 }
-                $this->vue->commenceJeu($_SESSION['villes']);
                 unset($_SESSION['actif']);
 
             }
