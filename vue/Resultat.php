@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Resultat</title>
   </head>
   <body>
     <?php
     if ($gagne){
-      echo "GGGGGGGGG"
+      echo "GGGGGGGGG";
     } else {
-      echo "perdu."
+      echo "perdu.";
     }
      ?>
 
