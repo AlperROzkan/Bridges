@@ -95,11 +95,11 @@ class Villes
             for ($j = $jA + 1; $j < $jB; $j++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
                 echo "PONT : ";
-                var_dump(in_array(array($iA,$j,"h1"), $this->getPonts()));
+                var_dump(array($iA,$j,"v1"));
                 echo "<br>";
-                var_dump(in_array(array($iA,$j,"h2"), $this->getPonts()));
+                var_dump($this->getPonts());
                 echo "<br>";
-                if ($this->existe($iA, $j) || in_array(array($iA,$j,"h1"), $this->getPonts()) || in_array(array($iA,$j,"h2"), $this->getPonts())) {
+                if ($this->existe($iA, $j) || in_array(array($iA,$j,"v1"), $this->getPonts()) || in_array(array($iA,$j,"v2"), $this->getPonts())) {
                     return true;
                 }
             }
@@ -108,12 +108,7 @@ class Villes
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
             for ($i = $iA + 1; $i < $iB; $i++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
-                echo "PONT : ";
-                var_dump(in_array(array($iA,$j,"h1"), $this->getPonts()));
-                echo "<br>";
-                var_dump(in_array(array($iA,$j,"h2"), $this->getPonts()));
-                echo "<br>";
-                if ($this->existe($i, $jA) || in_array(array($i,$jA,"v1"), $this->getPonts()) || in_array(array($i,$jA,"v2"), $this->getPonts())) {
+                if ($this->existe($i, $jA) || in_array(array($i,$jA,"h1"), $this->getPonts()) || in_array(array($i,$jA,"h2"), $this->getPonts())) {
                     return true;
                 }
             }
