@@ -67,6 +67,14 @@ $colonnes = $villes->maxY();
                         ?>
                         <td><input type="image" src="../Bridges/vue/img/v1.png" disabled></td>
                         <?php
+                    } else if (in_array(array($i,$j,"v2"), $villes->getPonts())) {
+                        ?>
+                        <td><input type="image" src="../Bridges/vue/img/v2.png" disabled></td>
+                        <?php
+                    } else if (in_array(array($i,$j,"h2"), $villes->getPonts())) {
+                        ?>
+                        <td><input type="image" src="../Bridges/vue/img/h2.png" disabled></td>
+                        <?php
                     }
 
                     else {
