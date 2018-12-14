@@ -40,13 +40,13 @@ class ControleurJeu
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
                 // On verifie si les deux villes sont liables
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[0]);
+                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
                 echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[1]);
+                var_dump($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif'])));
                 echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[0]);
+                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId'])));
                 echo "<br><br>";
-                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[1]);
+                var_dump($this->villes->findVilleById($this->villes->getVilleById($_POST['villeId'])));
                 echo "<br><br>";
 
                 if ($this->villes->liable($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[0], $this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[1], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[0], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[1])) {
