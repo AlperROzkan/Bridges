@@ -105,8 +105,8 @@ class Ville
             else if ($this->nombrePonts + 1 <= $this->getNombrePontsMax() && $villeALier->nombrePonts + 1 <= $villeALier->getNombrePontsMax()) {
                 // On change le nombre de ponts entre les deux villes
                 // $this->villesLiees[$villeALier->getId()] = $this->villesLiees[$villeALier->getId()] + 1;
-                $this->setVillesLiees($villeALier, $this->villesLiees[$villeALier->getId()] + 1);
-                //$villeALier->setVillesLiees($this, $villeALier->getVillesLiees($this->getId) + 1);
+                $this->setVillesLiees($villeALier);
+                $villeALier->setVillesLiees($this);
             } else {
                 return 0;//il me semble qu'ici aussi il faut renvoyer une exception qui fait perdre
             }

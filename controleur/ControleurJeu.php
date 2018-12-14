@@ -43,7 +43,7 @@ class ControleurJeu
                 if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1])) {
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
-                    $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                    //$_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 } else {
                     echo "<br> Les deux villes ne sont pas liables <br>";
                 }
