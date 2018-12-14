@@ -69,7 +69,7 @@ class Villes
     private function entreDeuxVilles($iA, $jA, $iB, $jB)
     {
         // On réorganise afin que les points sont dans le bonne ordre et que la boucle for() pour les parcourir apres fonctionne bien
-        if ($iA>$iB) {
+        if ($iA > $iB) {
             $tmp = $iA;
             $iA = $iB;
             $iB = $tmp;
@@ -79,7 +79,7 @@ class Villes
             $jB = $tmp;
         }
 
-        if($jA>$jB) {
+        if ($jA > $jB) {
             $tmp = $iA;
             $iA = $iB;
             $iB = $tmp;
@@ -92,7 +92,7 @@ class Villes
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
-            for ($j = $jA+1; $j < $jB-1; $j++) {
+            for ($j = $jA + 1; $j < $jB - 1; $j++) {
                 // On regarde si il y a une ville sur le chemin
                 if ($this->existe($iA, $j)) {
                     return true;
@@ -101,7 +101,7 @@ class Villes
         } // Si les deux villes sont sur la même ordonnée
         elseif ($iA != $iB && $jA == $jB) {
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
-            for ($i = $iA+1; $i < $iB-1; $i++) {
+            for ($i = $iA + 1; $i < $iB - 1; $i++) {
                 // On regarde si il y a une ville sur le chemin
                 if ($this->existe($i, $jA)) {
                     return true;
@@ -126,7 +126,7 @@ class Villes
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
             // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
-            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA,$jA,$iB,$jB)) {
+            if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA, $jA, $iB, $jB)) {
                 return true;
             }
         } // Les deux deux villes ne peuvent pas être égales
@@ -157,54 +157,54 @@ class Villes
         return $ponts;
     }
 
-    function getPonts(){
+    function getPonts()
+    {
         $res = array();
         $liaisons = $this->getToutesVillesLiees();
-        for($l = 0; $l < sizeof($liaisons); $l++ ){
+        for ($l = 0; $l < sizeof($liaisons); $l++) {
 
             $villesliees = array_keys($liaisons[$l]);
             foreach ($villesliees as $ville) {
-              $coord = $this->findVilleById($l);
-              $villeCoord = $this->findVilleById($ville);
-              //on test si on est sur la mm ligne
-              if ($villeCoord[0] == $coord[0]) {
-                if ($villeCoord[1] > $coord[1]) {
-                  //on fait en sorte d'avoir coord[1] > villeCoord[1]
-                  $tmp = $villeCoord ;
-                  $villeCoord = $coord;
-                  $coord = $tmp;
-                }
-                while ($villeCoord[1] < $coord[1]-1) {
-                  $villeCoord[1] ++;
-                  if (!in_array($villeCoord, $res)){
-                    $villeCoord[] = "h1";
-                    $res[] = $villeCoord;
-                    array_pop($villeCoord);
-                  }
-                }
-              }
-              //si on est sur la mm colonne
-              else {
-                if ($villeCoord[0] > $coord[0]) {
-                  //on fait en sorte d'avoir coord[1] > villeCoord[1]
-                  $tmp = $villeCoord ;
-                  $villeCoord = $coord;
-                  $coord = $tmp;
-                }
-                while ($villeCoord[0] < $coord[0]-1) {
-                  $villeCoord[0] ++;
-                  if (!in_array($villeCoord, $res)){
-                    $villeCoord[] = "v1";
-                    $res[] = $villeCoord;
-                    array_pop($villeCoord);
-                  }
+                $coord = $this->findVilleById($l);
+                $villeCoord = $this->findVilleById($ville);
+                //on test si on est sur la mm ligne
+                if ($villeCoord[0] == $coord[0]) {
+                    if ($villeCoord[1] > $coord[1]) {
+                        //on fait en sorte d'avoir coord[1] > villeCoord[1]
+                        $tmp = $villeCoord;
+                        $villeCoord = $coord;
+                        $coord = $tmp;
+                    }
+                    while ($villeCoord[1] < $coord[1] - 1) {
+                        $villeCoord[1]++;
+                        if (!in_array($villeCoord, $res)) {
+                            $villeCoord[] = "h1";
+                            $res[] = $villeCoord;
+                            array_pop($villeCoord);
+                        }
+                    }
+                } //si on est sur la mm colonne
+                else {
+                    if ($villeCoord[0] > $coord[0]) {
+                        //on fait en sorte d'avoir coord[1] > villeCoord[1]
+                        $tmp = $villeCoord;
+                        $villeCoord = $coord;
+                        $coord = $tmp;
+                    }
+                    while ($villeCoord[0] < $coord[0] - 1) {
+                        $villeCoord[0]++;
+                        if (!in_array($villeCoord, $res)) {
+                            $villeCoord[] = "v1";
+                            $res[] = $villeCoord;
+                            array_pop($villeCoord);
+                        }
 
+                    }
                 }
-              }
             }
 
         }
-      return $res;
+        return $res;
     }
 
 
