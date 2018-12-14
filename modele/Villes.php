@@ -167,7 +167,7 @@ class Villes
             foreach ($villesliees as $ville) {
                 $coord = $this->findVilleById($l);
                 $villeCoord = $this->findVilleById($ville);
-                $nbponts = $ville;
+                $nbponts = $liaisons[$l];
                 echo "nbponts : ";
                 var_dump($nbponts);
                 echo "<br>";
