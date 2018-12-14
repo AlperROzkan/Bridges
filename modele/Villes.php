@@ -9,11 +9,11 @@ class Villes
     function __construct()
     {
         // tableau représentatif d'un jeu qui servira à développer votre code
-        $this->villes[0][0] = new Ville("0", 3, 0);
+        $this->villes[0][2] = new Ville("0", 3, 0);
         $this->villes[0][6] = new Ville("1", 2, 0);
         $this->villes[3][0] = new Ville("2", 6, 0);
         $this->villes[3][5] = new Ville("3", 2, 0);
-        $this->villes[5][1] = new Ville("4", 1, 0);
+        $this->villes[5][2] = new Ville("4", 1, 0);
         $this->villes[5][6] = new Ville("5", 2, 0);
         $this->villes[6][0] = new Ville("6", 2, 0);
 
@@ -58,13 +58,13 @@ class Villes
     //rajout d'éventuelles méthodes
 
     /**
-     * Indique si il y a une ville entre les deux villes données en paramètres.
+     * Indique si il y a une ville ou pont entre les deux villes données en paramètres.
      * Il faudra faire attention a l'ordre des villes: le for ne sera pas le meme si la ville vient en premier ou en deuxieme place.
      * @param $iA : Abscisse d'une ville A
      * @param $jA : Ordonnée d'une ville A
      * @param $iB : Abscisse d'une ville B
      * @param $jB : Ordonnée d'une ville B
-     * @return bool True si il y a une ville entre les deux villes, False si il n'y en a pas
+     * @return bool True si il y a une ville ou pont entre les deux villes, False si il n'y en a pas
      */
     private function entreDeuxVilles($iA, $jA, $iB, $jB)
     {
@@ -93,8 +93,8 @@ class Villes
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
             for ($j = $jA + 1; $j < $jB - 1; $j++) {
-                // On regarde si il y a une ville sur le chemin
-                if ($this->existe($iA, $j)) {
+                // On regarde si il y a une ville ou un pont sur le chemin
+                if ($this->existe($iA, $j) || in_array(array($i,$j,"v1"), $this->getPonts()) || in_array(array($i,$j,"v2"), $this->getPonts())) {
                     return true;
                 }
             }
@@ -102,8 +102,8 @@ class Villes
         elseif ($iA != $iB && $jA == $jB) {
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
             for ($i = $iA + 1; $i < $iB - 1; $i++) {
-                // On regarde si il y a une ville sur le chemin
-                if ($this->existe($i, $jA)) {
+                // On regarde si il y a une ville ou un pont sur le chemin
+                if ($this->existe($i, $jA) || || in_array(array($i,$j,"h1"), $this->getPonts()) || in_array(array($i,$j,"h2"), $this->getPonts())) {
                     return true;
                 }
             }
