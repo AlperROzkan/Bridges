@@ -24,9 +24,11 @@ class ControleurJeu
 
     function selection()
     {
+        // On regarde si les villes sont dans une variable de session ou non
         if (!isset($_SESSION['villes'])) {
             $_SESSION['villes'] = $this->villes;
         }
+        // Si l'utilisateur appuie sur le bouton de deconnexion ou pas
         if (isset($_POST["deco"])) {
             session_unset();
             $this->vue->demandeLogin(false);
@@ -37,14 +39,21 @@ class ControleurJeu
                 $this->vue->commenceJeu($_SESSION['villes']);
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
-                $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
-                $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                // On verifie si les deux villes sont liables
+                if ($this->villes->liable($this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[0], $this->villes->findVilleById($this->villes->getVilleById($_SESSION['actif']))[1], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[0], $this->villes->findVilleById($this->villes->getVilleById($_POST['villeId']))[1])) {
+                    // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
+                    $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
+                    $_SESSION['villes']->getVilleById($_POST['villeId'])->lieVille($_SESSION['villes']->getVilleById($_SESSION['actif']));
+                }
+                else {
+                    echo "<br> Les deux villes ne sont pas liables <br>";
+                }
+
                 var_dump($_SESSION['villes']->getVilleById($_POST['villeId']));
                 echo "<br><br>";
                 var_dump($_SESSION['villes']->getVilleById($_SESSION['actif']));
                 echo "<br><br>";
-              //  $_SESSION['villes']->getPonts();
-
+                //  $_SESSION['villes']->getPonts();
 
 
                 $this->vue->commenceJeu($_SESSION['villes']);

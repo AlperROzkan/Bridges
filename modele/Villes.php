@@ -107,7 +107,8 @@ class Villes
         } // Les deux deux villes ne peuvent pas être égales
         elseif ($iA == $iB && $jA == $jB) {
             return false;
-        } else {
+        } // On renvoie false dans tout autre cas
+        else {
             return false;
         }
         return false;
@@ -183,7 +184,7 @@ class Villes
     /**
      * Donne les coordonées d'une ville a partir de son id
      * @param $id : Id d'une ville
-     * @return bool|array Renvoie false si il n'y a pas d'id correspondant a une ville, un array avec les coordonées si l'id correspond a une ville
+     * @return bool|Ville Renvoie false si il n'y a pas d'id correspondant a une ville, renvoie la ville sinon
      */
     function getVilleById($id)
     {
