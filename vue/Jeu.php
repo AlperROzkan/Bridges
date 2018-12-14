@@ -61,7 +61,7 @@ $colonnes = $villes->maxY();
                         <?php
                     } else if (in_array(array($i,$j), $villes->getPonts())) {
                         ?>
-                        <td>hibous</td>
+                        <td>hiboux</td>
                         <?php
                     }
 
