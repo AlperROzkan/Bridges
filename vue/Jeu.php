@@ -28,8 +28,6 @@ $colonnes = $villes->maxY();
 <form method="post" action="../Bridges/index.php">
     <!--Deconnexion-->
     <input type="submit" name="deco" value="Deconnexion">
-</form>
-<form method="post" action="../Bridges/index.php">
     <!--Reset-->
     <input type="submit" name="reset" value="Reset">
 </form>
