@@ -36,7 +36,9 @@ class ControleurJeu
         } else if (isset($_POST["reset"])){
             unset($_SESSION['villes']);
             unset($_SESSION['actif']);
+            $_SESSION['villes'] = $this->villes;
             $this->vue->commenceJeu($_SESSION['villes']);
+            }  
         }
         else if (!isset($_POST['villeId'])) {
             $this->vue->commenceJeu($_SESSION['villes']);
