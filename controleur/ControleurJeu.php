@@ -30,7 +30,7 @@ class ControleurJeu
         }
         // Si l'utilisateur appuie sur le bouton de deconnexion ou pas
         if (isset($_POST["deco"])) {
-            $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
+            //$this->modele->ajoutPartie( $_SESSION['pseudo'], false);
             session_unset();
             $this->vue->demandeLogin(false);
         } else if (!isset($_POST['villeId'])) {
