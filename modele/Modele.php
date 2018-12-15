@@ -137,9 +137,11 @@ class Modele
         try {
             // On recupere l'id de la partie précédente si il y'en a une et sinon on pose cet id a 0
             $statement = $this->connexion->query("SELECT id FROM parties ORDER BY id DESC LIMIT 1;");
-            $res = $statement->fetch();
-
-            var_dump($res);
+            $res = $statement->fetch(); // fetch renvoie false si il n'y a rien dans la table
+            // On initialise l'id a 1 si il n'y a rien dans la table
+            if (!$res) {
+                $res=1;
+            }
 
             // On insere les valeurs dans la table
             $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
