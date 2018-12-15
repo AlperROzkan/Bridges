@@ -58,17 +58,16 @@ class ControleurJeu
 
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
-                    var_dump($this->modele->stat($_SESSION['pseudo']));
                 } else {
                   echo "<br> Les deux villes ne sont pas liables <br>";
                 }
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
-                  //$this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']));
+                  $this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']));
                   unset($_SESSION['villes']);
                   $this->modele->ajoutPartie( $_SESSION['pseudo'], true);
                 } else if ($perdu) {
-                    //$this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']));
+                    $this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']));
                     unset($_SESSION['villes']);
                     $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
                 }

@@ -152,7 +152,7 @@ class Modele
             $this->deconnexion();
             throw new TableAccesException("Probleme avec la table parties");
         }
-
+      }
 
         /**
          * Cette methode affichera les statistiques du joueur en cours
@@ -167,14 +167,11 @@ class Modele
             $statement = $this->connexion->prepare("SELECT COUNT(pseudo) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
             $statement->bindParam(1,$pseudo);
             $res2 = $statement->fetch();
-            return $res2;
+            return $res2/$res;
 
           } catch (PDOException $e) {
               $this->deconnexion();
               throw new TableAccesException("Probleme avec la table parties");
           }
         }
-
-
-    }
 }
