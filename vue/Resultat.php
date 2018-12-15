@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Resultat</title>
-  </head>
-  <body>
-    <?php
-    if ($gagne){
-      echo "GGGGGGGGG";
-    } else {
-      echo "perdu.";
-    }
-     ?>
+</head>
+<body>
+<h1>Bridges</h1>
+<h2>Eliott ROBIN et Alper OZKAN -- Info 2 Groupe 3 </h2>
+<h3>Ecran de resultat</h3>
 
-  </body>
+<hr>
+
+<?php
+if ($gagne) {
+    ?>
+    <h2>Bravo, vous avez gagné.</h2>
+    <?php
+} else {
+    ?>
+    <h2>Oh non, vous avez perdu.</h2>
+    <?php
+}
+?>
+
+</body>
 </html>

@@ -40,6 +40,8 @@ class TableAccesException extends BdExtension
 class Modele
 {
     private $connexion;
+    // On ajoute une variable idPartie afin de compter le nombre de parties
+    private static $idPartie = 0;
 
     // Constructeur
     function __construct()
@@ -122,5 +124,32 @@ class Modele
             $this->deconnexion();
             throw new TableAccesException("problème avec la table pseudonyme");
         }
+    }
+
+    /**
+     * Ajoute une ligne dans la table partie
+     * L'id s'incremente tout seul.
+     * PRECONDITION : pseudo est un String, $etatPartie un booleen
+     * POSTCONDITION : une ligne est ajoutée dans phpmyadmin
+     * @param $pseudo : Le pseudo du joueur qui a joué la partie
+     * @param $etatPartie : True si la partie est gagnée, False sinon
+     */
+    public function ajoutPartie($pseudo, $etatPartie)
+    {
+        // On incremente la partie de 1
+        $this->idPartie++;
+        try {
+            // On insere les valeurs dans la table
+            $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
+            $statement->bindParam(1, $this->idPartie);
+            $statement->bindParam(2, $pseudo);
+            $statement->bindParam(3, $etatPartie);
+            $statement->execute();
+        } catch (PDOException $e) {
+            $this->deconnexion();
+            throw new TableAccesException("Probleme avec la table parties");
+        }
+
+
     }
 }
