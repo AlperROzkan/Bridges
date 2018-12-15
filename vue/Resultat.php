@@ -33,8 +33,10 @@ Vous avez un ratio w/l de : <?php echo $ratio; ?>
 <br>
 Meilleurs joueurs :
 <?php
+$i = 0; //compteur pour parcourir le ratio des meilleurs joueurs
 foreach ($bestPlayers as $player) {
-  echo "<br>".$player[0]."nbWins : ".$player[1];
+  echo "<br>".$player[0]."  nbWins : ".$player[1]."  ratio : ".$ratiosBestPlayers[$i];
+  $i++;
 }
 
 

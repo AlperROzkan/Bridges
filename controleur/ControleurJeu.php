@@ -62,11 +62,15 @@ class ControleurJeu
                 }
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
-                  $this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']), $this->modele->getTroisMeilleurJoueur());
+                  $this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']), $this->modele->getTroisMeilleurJoueur(), $ratios);
                   unset($_SESSION['villes']);
                   $this->modele->ajoutPartie( $_SESSION['pseudo'], true);
                 } else if ($perdu) {
-                    $this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']),$this->modele->getTroisMeilleurJoueur());
+                  //on recupere le ratio des 3 meilleurs joueurs
+                    foreach ($$this->modele->getTroisMeilleurJoueur() as $player) {
+                      $ratios[] = $this->modele->stat($player[0]);
+                    }
+                    $this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']),$this->modele->getTroisMeilleurJoueur(), $ratios);
                     unset($_SESSION['villes']);
                     $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
                 }
