@@ -22,6 +22,9 @@ if ($gagne) {
     <?php
 }
 ?>
-
+<form method="post" action="../Bridges/index.php">
+    <!--Reset-->
+    <input type="submit" name="reset" value="Play Again">
+</form>
 </body>
 </html>
