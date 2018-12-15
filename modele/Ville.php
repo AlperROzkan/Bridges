@@ -77,8 +77,8 @@ class Ville
 
     /**
      * Methode qui permet d'ajouter un element a $this->villesLiees
+     * On ajoute un seul pont a chaque
      * @param $villeCible ville avec laquelle on fait un lien
-     * @param $nombrePonts le nombre de ponts avec cette ville
      */
     function setVillesLiees(Ville $villeCible)
     {
