@@ -142,7 +142,6 @@ class Modele
             if (!$res) {
                 $res=1;
             }
-
             // On insere les valeurs dans la table
             $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
             $statement->bindParam(1, $res);
@@ -152,6 +151,16 @@ class Modele
         } catch (PDOException $e) {
             $this->deconnexion();
             throw new TableAccesException("Probleme avec la table parties");
+        }
+
+
+        /**
+         * Cette methode affichera les statistiques du joueur en cours
+         * $pseudo : Pseudo du joueur courant
+         */
+        function stat($pseudo) {
+            $statement = $this->connexion->prepare("SELECT pseudo FROM parties p WHERE j.pseudo=? ");
+            $statement->bindParam();
         }
 
 
