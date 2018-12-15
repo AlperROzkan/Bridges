@@ -34,7 +34,8 @@ Vous avez un ratio w/l de : <?php echo $ratio; ?>
 Meilleurs joueurs :
 <?php
 foreach ($bestPlayers as $player) {
-  echo "<br>".$player;
+  var_dump($player);
+  echo "<br>".$player[0];
 }
 
 
