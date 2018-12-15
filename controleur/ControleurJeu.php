@@ -67,7 +67,7 @@ class ControleurJeu
                   $this->modele->ajoutPartie( $_SESSION['pseudo'], true);
                 } else if ($perdu) {
                   //on recupere le ratio des 3 meilleurs joueurs
-                    foreach ($$this->modele->getTroisMeilleurJoueur() as $player) {
+                    foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
                       $ratios[] = $this->modele->stat($player[0]);
                     }
                     $this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']),$this->modele->getTroisMeilleurJoueur(), $ratios);
