@@ -169,7 +169,7 @@ class Modele
             $statement->bindParam(1,$pseudo);
             $statement->execute();
             $res2 = $statement->fetch();
-            
+
             return $res2[0]/$res[0];
 
           } catch (PDOException $e) {
@@ -177,4 +177,12 @@ class Modele
               throw new TableAccesException("Probleme avec la table parties");
           }
         }
+
+        function getTroisMeilleurJoueur(){
+          $statement = $this->connexion->query("SELECT pseudo,count(pseudo) FROM (SELECT pseudo,id FROM parties WHERE partieGagnee = 1)AS subquery group by pseudo ORDER BY count(pseudo) DESC LIMIT 3;");
+          return($res = $statement->fetchAll());
+        }
+
+
+
 }
