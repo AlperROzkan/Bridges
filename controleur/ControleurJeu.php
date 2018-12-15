@@ -59,12 +59,7 @@ class ControleurJeu
                   $this->vue->commenceJeu($_SESSION['villes']);
                 }
                 unset($_SESSION['actif']);
-
             }
-
-
         }
-
-
     }
 }
