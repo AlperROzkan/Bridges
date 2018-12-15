@@ -49,7 +49,7 @@ $colonnes = $villes->maxY();
     <form method="post" action="../Bridges/index.php">
       <?php
         if ($error) {
-          echo "<p>Vous avez essayé de lier deux villes qui : <br>ne sont pas dans la même colonne ni dans la même ligne <br> ont une ville entre elles <br> on un pont dans le sens inverse sur leur trajectoire </p>";
+          echo "<p>Vous avez essayé de lier deux villes qui : <br>ne sont pas dans la même colonne ni dans la même ligne <br> ont une ville entre elles <br> ont un pont dans le sens inverse sur leur trajectoire </p>";
         }
        ?>
         <!-- La zone de jeu -->
