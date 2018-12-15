@@ -14,7 +14,7 @@ class Vue
      * Commence une partie
      * @param $villes : villes du jeu
      */
-    function commenceJeu($villes)
+    function commenceJeu($villes, $error)
     {
         require "Jeu.php";
     }

@@ -42,13 +42,13 @@ class ControleurJeu
             unset($_SESSION['villes']);
             unset($_SESSION['actif']);
             $_SESSION['villes'] = $this->villes;
-            $this->vue->commenceJeu($_SESSION['villes']);
+            $this->vue->commenceJeu($_SESSION['villes'],false);
         }
         else if (!isset($_POST['villeId'])) {
-            $this->vue->commenceJeu($_SESSION['villes']);
+            $this->vue->commenceJeu($_SESSION['villes'],false);
         } else {
             if (!isset($_SESSION['actif'])) {
-                $this->vue->commenceJeu($_SESSION['villes']);
+                $this->vue->commenceJeu($_SESSION['villes'],false);
                 $_SESSION['actif'] = $_POST["villeId"];
             } else {
                 // On verifie si les deux villes sont liables
@@ -59,7 +59,7 @@ class ControleurJeu
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
-                  echo "<br> Les deux villes ne sont pas liables <br>";
+                  $this->vue->commenceJeu($_SESSION['villes'], true); //treu signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
                 }
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
@@ -72,7 +72,7 @@ class ControleurJeu
                     $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
                 }
                 else {
-                  $this->vue->commenceJeu($_SESSION['villes']);
+                  $this->vue->commenceJeu($_SESSION['villes'],false);
                 }
                 unset($_SESSION['actif']);
             }

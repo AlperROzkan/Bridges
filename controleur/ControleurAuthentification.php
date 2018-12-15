@@ -27,10 +27,10 @@ class ControleurAuthentification
     function accueil()
     {
         if (isset($_SESSION['pseudo'])) {
-            $this->vue->commenceJeu($this->villes);
+            $this->vue->commenceJeu($this->villes, false);
         } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
             $_SESSION['pseudo'] = $_POST["pseudo"];
-            $this->vue->commenceJeu($this->villes);
+            $this->vue->commenceJeu($this->villes, false);
         } else if (!isset($_SESSION['pseudo']) && (!empty($_POST["pseudo"]) || !empty($_POST["mdp"]))) {
             $this->vue->demandeLogin(true);
         } else {
