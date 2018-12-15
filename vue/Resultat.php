@@ -31,7 +31,7 @@ if ($gagne) {
 <br>
 Vous avez un ratio w/l de : <?php echo $ratio; ?>
 <br>
-Meilleurs joueurs :
+Meilleurs joueurs selon le nombre total de parties gagnées :
 <?php
 $i = 0; //compteur pour parcourir le ratio des meilleurs joueurs
 foreach ($bestPlayers as $player) {
