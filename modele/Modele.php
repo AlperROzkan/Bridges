@@ -143,7 +143,7 @@ class Modele
 
             // On insere les valeurs dans la table
             $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
-            $statement->bindParam(1, $this->idPartie);
+            $statement->bindParam(1, $res);
             $statement->bindParam(2, $pseudo);
             $statement->bindParam(3, $etatPartie);
             $statement->execute();
