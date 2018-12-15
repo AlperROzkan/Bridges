@@ -30,6 +30,7 @@ class ControleurJeu
         }
         // Si l'utilisateur appuie sur le bouton de deconnexion ou pas
         if (isset($_POST["deco"])) {
+            $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
             session_unset();
             $this->vue->demandeLogin(false);
         } else if (!isset($_POST['villeId'])) {
@@ -52,8 +53,10 @@ class ControleurJeu
                 $_SESSION['villes']->getPonts();
                 if ($_SESSION['villes']->gagne()){
                   $this->vue->resultat(true);
+                  $this->modele->ajoutPartie( $_SESSION['pseudo'], true);
                 } else if ($perdu) {
                     $this->vue->resultat(false);
+                    $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
                 }
                 else {
                   $this->vue->commenceJeu($_SESSION['villes']);
