@@ -40,8 +40,6 @@ class TableAccesException extends BdExtension
 class Modele
 {
     private $connexion;
-    // On ajoute une variable idPartie afin de compter le nombre de parties
-    private static $idPartie = 0;
 
     // Constructeur
     function __construct()
@@ -136,12 +134,18 @@ class Modele
      */
     public function ajoutPartie($pseudo, $etatPartie)
     {
-        // On incremente la partie de 1
-        $this->idPartie++;
         try {
+            // On recupere l'id de la partie précédente si il y'en a une et sinon on pose cet id a 0
+            $statement = $this->connexion->query("SELECT id FROM parties ORDER BY id DESC LIMIT 1;");
+            $res = $statement->fetch(); // fetch renvoie false si il n'y a rien dans la table
+            // On initialise l'id a 1 si il n'y a rien dans la table
+            if (!$res) {
+                $res=1;
+            }
+
             // On insere les valeurs dans la table
             $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
-            $statement->bindParam(1, $this->idPartie);
+            $statement->bindParam(1, $res);
             $statement->bindParam(2, $pseudo);
             $statement->bindParam(3, $etatPartie);
             $statement->execute();
