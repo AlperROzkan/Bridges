@@ -28,5 +28,7 @@ if ($gagne) {
   <!--Reset-->
   <input type="submit" name="reset" value="Reset">
 </form>
+<br>
+Vous avez un ratio w/l de : <?php echo $ratio; ?>
 </body>
 </html>
