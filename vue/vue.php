@@ -19,7 +19,7 @@ class Vue
         require "Jeu.php";
     }
 
-    function resultat($gagne, $ratio)
+    function resultat($gagne, $ratio, $bestPlayers)
     {
         require "Resultat.php";
     }

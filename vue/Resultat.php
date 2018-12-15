@@ -30,5 +30,14 @@ if ($gagne) {
 </form>
 <br>
 Vous avez un ratio w/l de : <?php echo $ratio; ?>
+<br>
+Meilleurs joueurs :
+<?php
+foreach ($bestPlayers as $player) {
+  echo "<br>".$player;
+}
+
+
+ ?>
 </body>
 </html>
