@@ -167,7 +167,7 @@ class Modele
             $statement = $this->connexion->prepare("SELECT COUNT(pseudo) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
             $statement->bindParam(1,$pseudo);
             $res2 = $statement->fetch();
-            return $res2/$res;
+            return $res2;
 
           } catch (PDOException $e) {
               $this->deconnexion();
