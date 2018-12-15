@@ -17,8 +17,6 @@ class Villes
         $this->villes[5][1] = new Ville("4", 1, 0);
         $this->villes[5][6] = new Ville("5", 2, 0);
         $this->villes[6][0] = new Ville("6", 2, 0);
-        $this->villes[0][3] = new Ville("6", 2, 0);
-        $this->villes[6][3] = new Ville("6", 2, 0);
 
     }
 
