@@ -24,6 +24,7 @@ class ControleurJeu
 
     function selection()
     {
+          $mmLigne = false; //Variable qui sert pour l'affichage du jeu Si False pas de message d'alerte si true message qui previent que l'on a cliqué sur deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
         // On regarde si les villes sont dans une variable de session ou non
         if (!isset($_SESSION['villes']) && !isset($_POST["deco"]) && !isset($_POST["reset"])) {
             $_SESSION['villes'] = $this->villes;
@@ -58,7 +59,7 @@ class ControleurJeu
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
-                  $this->vue->commenceJeu($_SESSION['villes'], true); //treu signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
+                $mmLigne = true); //treu signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
                 }
                 $_SESSION['villes']->getPonts();
                 //on recupere le ratio des 3 meilleurs joueurs
@@ -75,7 +76,7 @@ class ControleurJeu
                     $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
                 }
                 else {
-                  $this->vue->commenceJeu($_SESSION['villes'],false);
+                  $this->vue->commenceJeu($_SESSION['villes'], $mmLigne);
                 }
                 unset($_SESSION['actif']);
             }
