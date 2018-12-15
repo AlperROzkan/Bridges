@@ -26,9 +26,12 @@ $colonnes = $villes->maxY();
 <hr>
 
 <form method="post" action="../Bridges/index.php">
-    <!-- TODO : Tester plus en détail le fonctionnement de la deco, c'est un peu bricolé ce que j'ai fait-->
     <!--Deconnexion-->
     <input type="submit" name="deco" value="Deconnexion">
+</form>
+<form method="post" action="../Bridges/index.php">
+    <!--Reset-->
+    <input type="submit" name="reset" value="Reset">
 </form>
 
 <?php //Tests a enlever plus tard

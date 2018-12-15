@@ -33,7 +33,12 @@ class ControleurJeu
             //$this->modele->ajoutPartie( $_SESSION['pseudo'], false);
             session_unset();
             $this->vue->demandeLogin(false);
-        } else if (!isset($_POST['villeId'])) {
+        } else if (isset($_POST["reset"])){
+            unset(($_SESSION['villes']);
+            unset($_SESSION['actif']);
+            $this->vue->commenceJeu($_SESSION['villes']);
+        }
+        else if (!isset($_POST['villeId'])) {
             $this->vue->commenceJeu($_SESSION['villes']);
         } else {
             if (!isset($_SESSION['actif'])) {
