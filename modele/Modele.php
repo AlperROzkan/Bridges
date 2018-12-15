@@ -162,10 +162,12 @@ class Modele
           try {
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? ;");
             $statement->bindParam(1,$pseudo);
+            $statement->execute();
             $res = $statement->fetch();
 
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
             $statement->bindParam(1,$pseudo);
+            $statement->execute();
             $res2 = $statement->fetch();
 
             var_dump($res);
