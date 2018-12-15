@@ -34,7 +34,7 @@ class ControleurJeu
             session_unset();
             $this->vue->demandeLogin(false);
         } else if (isset($_POST["reset"])){
-            unset(($_SESSION['villes']);
+            unset($_SESSION['villes']);
             unset($_SESSION['actif']);
             $this->vue->commenceJeu($_SESSION['villes']);
         }
