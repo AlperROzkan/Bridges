@@ -160,11 +160,11 @@ class Modele
          */
         function stat($pseudo) {
           try {
-            $statement = $this->connexion->prepare("SELECT COUNT(pseudo) FROM parties WHERE pseudo=? ;");
+            $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? ;");
             $statement->bindParam(1,$pseudo);
             $res = $statement->fetch();
 
-            $statement = $this->connexion->prepare("SELECT COUNT(pseudo) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
+            $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
             $statement->bindParam(1,$pseudo);
             $res2 = $statement->fetch();
 
