@@ -58,6 +58,7 @@ class ControleurJeu
 
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
+                    var_dump($this->modele->stat($_SESSION['pseudo']));
                 } else {
                   echo "<br> Les deux villes ne sont pas liables <br>";
                 }
