@@ -61,15 +61,15 @@ class ControleurJeu
                   $this->vue->commenceJeu($_SESSION['villes'], true); //treu signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
                 }
                 $_SESSION['villes']->getPonts();
+                //on recupere le ratio des 3 meilleurs joueurs
+                  foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
+                    $ratios[] = $this->modele->stat($player[0]);
+                  }
                 if ($_SESSION['villes']->gagne()){
                   $this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']), $this->modele->getTroisMeilleurJoueur(), $ratios);
                   unset($_SESSION['villes']);
                   $this->modele->ajoutPartie( $_SESSION['pseudo'], true);
                 } else if ($perdu) {
-                  //on recupere le ratio des 3 meilleurs joueurs
-                    foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
-                      $ratios[] = $this->modele->stat($player[0]);
-                    }
                     $this->vue->resultat(false,$this->modele->stat($_SESSION['pseudo']),$this->modele->getTroisMeilleurJoueur(), $ratios);
                     unset($_SESSION['villes']);
                     $this->modele->ajoutPartie( $_SESSION['pseudo'], false);
