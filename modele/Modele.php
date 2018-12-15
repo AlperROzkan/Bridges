@@ -170,9 +170,9 @@ class Modele
             $statement->execute();
             $res2 = $statement->fetch();
 
-            var_dump($res);
+            var_dump((int)$res);
             echo "<br>";
-            var_dump($res2);
+            var_dump((int)$res2);
             return $res2/$res;
 
           } catch (PDOException $e) {
