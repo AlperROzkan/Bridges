@@ -169,10 +169,7 @@ class Modele
             $statement->bindParam(1,$pseudo);
             $statement->execute();
             $res2 = $statement->fetch();
-
-            var_dump($res);
-            echo "<br>";
-            var_dump($res2);
+            
             return $res2[0]/$res[0];
 
           } catch (PDOException $e) {
