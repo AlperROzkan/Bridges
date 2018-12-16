@@ -156,22 +156,22 @@ class Villes
     }
 
     /**
-     * Renvoie les coordonées des ponts sur le plateau de jeu.
+     * Renvoie un tableau avec les coordonées des ponts créés et leur type.
      * @return array : contient les coordonées de chaque pont sur le plateau de jeu.
      */
     function getPonts()
     {
-        $res = array();
-        $liaisons = $this->getToutesVillesLiees();
-        for ($l = 0; $l < sizeof($liaisons); $l++) {
+        $res = array(); //le tableau qui contiendra coordonnées + type
+        $liaisons = $this->getToutesVillesLiees(); // on récupère le tableau associatif qui regroupe toutes les villes liées
+        for ($l = 0; $l < sizeof($liaisons); $l++) { //on parcour le tableau
 
-            $villesliees = array_keys($liaisons[$l]);
-            foreach ($villesliees as $ville) {
-                $coord = $this->findVilleById($l);
-                $villeCoord = $this->findVilleById($ville);
-                $nbponts = $liaisons[$l][$ville];
+            $villesliees = array_keys($liaisons[$l]); // on stock l'id de la ville dont on veut vérifier les liaisons
+            foreach ($villesliees as $ville) { // on parcours toutes les liaisons de la ville
+                $coord = $this->findVilleById($l); // on stock les coordonnées de la ville dont on veut vérifier les liaisons
+                $villeCoord = $this->findVilleById($ville); //on stock les coordonnées de la ville liée à notre ville
+                $nbponts = $liaisons[$l][$ville]; // on stock le nombre de pont entre les deux villes liées
 
-                //on test si on est sur la mm ligne
+                //on test si on est sur la mm colonne
                 if ($villeCoord[0] == $coord[0]) {
                     if ($villeCoord[1] > $coord[1]) {
                         //on fait en sorte d'avoir coord[1] > villeCoord[1]
@@ -179,22 +179,22 @@ class Villes
                         $villeCoord = $coord;
                         $coord = $tmp;
                     }
-                    while ($villeCoord[1] < $coord[1] - 1) {
-                        $villeCoord[1]++;
-                        if (!in_array($villeCoord, $res)) {
-                            if ($nbponts < 2) {
-                                $villeCoord[] = "h1";
-                            } else {
-                                $villeCoord[] = "h2";
+                    while ($villeCoord[1] < $coord[1] - 1) { //tant que les coord ne sont pas égales
+                        $villeCoord[1]++; //on se déplace sur la case de droite
+                        if (!in_array($villeCoord, $res)) { //si la coordonnées n'est pas encore dans le tableau de retour
+                            if ($nbponts < 2) { // si il n'y qu'un pont entre les deux villes
+                                $villeCoord[] = "h1"; //on ajoute le type de pont au couple de coordonnées (h1 = 1 pont horizontal)
+                            } else {// si il y a 2 ponts entre les deux villes
+                                $villeCoord[] = "h2"; //on ajoute le type de pont au couple de coordonnées (h2 = 2 pont horizontaux)
                             }
-                            $res[] = $villeCoord;
-                            array_pop($villeCoord);
+                            $res[] = $villeCoord; //on ajoute le triplet position x, y et le type au tableau de réponse
+                            array_pop($villeCoord); // on supprime le type de pont que l'on avait ajouté aux coordonnées
                         }
                     }
-                } //si on est sur la mm colonne
+                } //si on est sur la mm ligne
                 else {
                     if ($villeCoord[0] > $coord[0]) {
-                        //on fait en sorte d'avoir coord[1] > villeCoord[1]
+                        //on fait en sorte d'avoir coord[0] > villeCoord[0]
                         $tmp = $villeCoord;
                         $villeCoord = $coord;
                         $coord = $tmp;
@@ -203,9 +203,9 @@ class Villes
                         $villeCoord[0]++;
                         if (!in_array($villeCoord, $res)) {
                             if ($nbponts < 2) {
-                                $villeCoord[] = "v1";
+                                $villeCoord[] = "v1";//on ajoute le type de pont au couple de coordonnées (v1 = 1 pont vertical)
                             } else {
-                                $villeCoord[] = "v2";
+                                $villeCoord[] = "v2";//on ajoute le type de pont au couple de coordonnées (v2 = 2 pont verticaux)
                             }
                             $res[] = $villeCoord;
                             array_pop($villeCoord);
@@ -215,7 +215,7 @@ class Villes
                 }
             }
         }
-        return $res;
+        return $res; //on retourne le tableau de triplets regroupant tous les pont créés
     }
 
 
@@ -223,9 +223,8 @@ class Villes
      * Retourne un entier qui donne le maximum des abscisses des villes
      * @return int
      */
-    function maxX()
-    {
-        // TODO A ameliorer
+    function maxX(){
+      // TODO A ameliore
         return 6 + 1;
     }
 
@@ -233,9 +232,8 @@ class Villes
      * Retourne un entier qui donne le maximum des ordonnées des villes
      * @return int
      */
-    function maxY()
-    {
-        // TODO A ameliorer
+    function maxY(){
+        // TODO A ameliore
         return 6 + 1;
     }
 
@@ -259,7 +257,7 @@ class Villes
     /**
      * Renvoie coordonnées de la ville à partir de l'id en param
      * @param $id
-     * @return array|bool un tableau contenant les coordonées de la ville si reussi, false sinon
+     * @return array|bool un tableau contenant les coordonées de la ville si trouvée, false sinon
      */
     function findVilleById($id)
     {
@@ -273,24 +271,35 @@ class Villes
         return false;
     }
 
+    /**
+     * Renvoie bool pour savoir si la partie est gagnée
+     * @return bool partie gagne ou non
+     */
     function gagne()
     {
         $res = true;
+        //on parcourt toutes les villes
         foreach ($this->villes as $element) {
             foreach ($element as $ville) {
-                if ($ville->getNombrePonts() != $ville->getNombrePontsMax()) {
-                    $res = false;
+                if ($ville->getNombrePonts() != $ville->getNombrePontsMax()) { //si il y a au moins une ville qui n'a pas atteint son nombre de pont max
+                    $res = false; // alors on a pas encore gagné
                 }
             }
         }
         return $res;
     }
 
+    /**
+     * Renvoie bool pour savoir si la partie est perdue lorsque l'on essaye de lier deux villes
+     * @param $ville1, $ville2
+     * @return bool partie perdue ou non
+     */
     function perdu($ville1, $ville2)
     {
         $res = false;
+        //on verifie si les deux villes n'ont pas déjà atteint le nombre de pont max ou le nombre de ponts max entre elles
         if ($ville1->getNombrePonts() == $ville1->getNombrePontsMax() || $ville2->getNombrePonts() == $ville2->getNombrePontsMax() || $ville1->getVillesLiees()[$ville2->getId()] >= 2) {
-            $res = true;
+            $res = true; // si c'est le cas on a perdu
         }
 
         return $res;
