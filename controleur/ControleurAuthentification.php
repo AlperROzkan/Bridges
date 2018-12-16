@@ -3,15 +3,18 @@ require_once PATH_VUE . "/vue.php";
 require_once PATH_MODELE . "/Modele.php";
 require_once PATH_MODELE . "/Villes.php";
 
+/**
+ * Class ControleurAuthentification
+ * Controle l'authentification au jeu Bridges.
+ */
 class ControleurAuthentification
 {
-
     private $vue;
     private $modele;
     private $villes; // On ne met que villes ici car il y a deja un "require ville.php" dans villes.php
 
     /**
-     * ControleurAuthentification constructor.
+     * Constructeur de ControleurAuthentification.
      * @throws ConnexionException
      */
     function __construct()
@@ -22,6 +25,10 @@ class ControleurAuthentification
     }
 
     /**
+     * Une fois appelée cette methode redirge l'utilisateur :
+     * - vers la page de login si il n'est pas connecte,
+     * - vers la page de login avec un message d'erreur si il s'est connecte avec les mauvais login et mot de passe,
+     * - vers le jeu si il a utilise les bon login et mot de passe
      * @throws TableAccesException
      */
     function accueil()

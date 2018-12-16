@@ -5,7 +5,7 @@
  * Date: 08/12/2018
  * Time: 09:19
  */
-// Initialisation des variables
+// Initialisation des variables pour le nombre de lignes et de colonnes
 $lignes = $villes->maxX();
 $colonnes = $villes->maxY();
 ?>

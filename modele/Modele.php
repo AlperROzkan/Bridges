@@ -61,13 +61,13 @@ class Modele
         $this->connexion = null;
     }
 
-    /*
-    * Methode qui permet de récuperer les pseudos dans la table 'joueurs' de joueurs.sql
-    * Utilise une requete classique
-    * Pre-condition : Rien
-    * Post-condition : Donne un tableau contenant les 'pseudo's des joueurs
-    * Gestion Erreur : TableAccesException est lancée
-    */
+    /**
+     * Methode qui permet de récuperer les pseudos dans la table 'joueurs' de joueurs.sql
+     * Utilise une requete classique
+     * Pre-condition : Rien
+     * Post-condition : Donne un tableau contenant les 'pseudo's des joueurs
+     * Gestion Erreur : TableAccesException est lancée
+     */
     public function getPseudos()
     {
         try {
@@ -98,12 +98,12 @@ class Modele
     }
 
 
-    /*
-    * Methode qui permet de verifier qu'un pseudo existe dans la table joueurs
-    * Utilise une requete préparée
-    * Post-condition : vrai si le pseudo existe, faux sinon
-    * Gestion d'erreurs : TableAccesException est lancé
-    */
+    /**
+     * Methode qui permet de verifier qu'un pseudo existe dans la table joueurs
+     * Utilise une requete préparée
+     * Post-condition : vrai si le pseudo existe, faux sinon
+     * Gestion d'erreurs : TableAccesException est lancé
+     */
     public function exists($pseudo)
     {
         try {
@@ -140,7 +140,7 @@ class Modele
             $res = $statement->fetch(); // fetch renvoie false si il n'y a rien dans la table
             // On initialise l'id a 1 si il n'y a rien dans la table
             if (!$res) {
-                $res=1;
+                $res = 1;
             }
             // On insere les valeurs dans la table
             $statement = $this->connexion->prepare("INSERT INTO parties (id, pseudo, partieGagnee) VALUES (?,?,?);");
@@ -152,37 +152,41 @@ class Modele
             $this->deconnexion();
             throw new TableAccesException("Probleme avec la table parties");
         }
-      }
+    }
 
-        /**
-         * Cette methode affichera les statistiques du joueur en cours
-         * $pseudo : Pseudo du joueur courant
-         */
-        function stat($pseudo) {
-          try {
+    /**
+     * Cette methode affichera les statistiques du joueur en cours
+     * $pseudo : Pseudo du joueur courant
+     */
+    function stat($pseudo)
+    {
+        try {
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? ;");
-            $statement->bindParam(1,$pseudo);
+            $statement->bindParam(1, $pseudo);
             $statement->execute();
             $res = $statement->fetch();
 
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
-            $statement->bindParam(1,$pseudo);
+            $statement->bindParam(1, $pseudo);
             $statement->execute();
             $res2 = $statement->fetch();
 
-            return $res2[0]/$res[0];
+            return $res2[0] / $res[0];
 
-          } catch (PDOException $e) {
-              $this->deconnexion();
-              throw new TableAccesException("Probleme avec la table parties");
-          }
+        } catch (PDOException $e) {
+            $this->deconnexion();
+            throw new TableAccesException("Probleme avec la table parties");
         }
+    }
 
-        function getTroisMeilleurJoueur(){
-          $statement = $this->connexion->query("SELECT pseudo,count(pseudo) FROM (SELECT pseudo,id FROM parties WHERE partieGagnee = 1)AS subquery group by pseudo ORDER BY count(pseudo) DESC LIMIT 3;");
-          return($res = $statement->fetchAll());
-        }
-
+    /** Cette méthode renvoie les trois meilleurs joueurs enregistrés dans la base de données.
+     * @return array : Tableau qui contient les meilleurs joueurs
+     */
+    function getTroisMeilleurJoueur()
+    {
+        $statement = $this->connexion->query("SELECT pseudo,count(pseudo) FROM (SELECT pseudo,id FROM parties WHERE partieGagnee = 1)AS subquery group by pseudo ORDER BY count(pseudo) DESC LIMIT 3;");
+        return ($res = $statement->fetchAll());
+    }
 
 
 }

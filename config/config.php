@@ -9,9 +9,9 @@ define("PATH_CONTROLEUR", HOME_SITE."/controleur");
 define("PATH_MODELE", HOME_SITE."/modele");
 
 
-// données pour la connexion au sgbd (Changer les X a chaque fois pour se connecter)
+// Données pour la connexion au sgbd
 define("HOST", "localhost");
-define("BD", "E175980H");
-define("LOGIN", "E175980H");
-define("PASSWORD", "E175980H");
+define("BD", "E175980H"); // Changer la valeur ici par son nom de Base de Données
+define("LOGIN", "E175980H"); // Changer la valeur ici par son login de phpmyadmin
+define("PASSWORD", "E175980H"); // Changer la valeur ici par son mot de passe de phpmyadmin
 ?>
