@@ -1,7 +1,0 @@
-Penser à changer : config.php
-
-Le plateau doit etre de dimension 7x7
-
-Les id des villes doivent aller de 0 à nbVilles avec un pas de 1
-
-
