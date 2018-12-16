@@ -59,7 +59,6 @@ $colonnes = $villes->maxY();
             ?>
             <tr>
                 <?php
-
                 for ($j = 0; $j < $colonnes; $j++) {
                     if ($villes->existe($i, $j)) {
                         ?>
@@ -96,12 +95,6 @@ $colonnes = $villes->maxY();
         ?>
         </tbody>
     </form>
-
-
 </table>
-
-
-
-
 </body>
 </html>

@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Classe Ville
+ * Elle gère les villes individuellement.
+ */
 class Ville
 {
     // permet d'identifier de manière unique la ville
@@ -14,10 +17,10 @@ class Ville
     private $villesLiees;
 
     /**
-     * constructeur qui permet de valuer les 2 attributs de la classe
-     * @param $id
-     * @param $nombrePontsMax
-     * @param $nombrePonts
+     * Constructeur qui permet de valuer les 2 attributs de la classe
+     * @param $id : id de la ville
+     * @param $nombrePontsMax : Le nombre de ponts max de la ville, on ne peut pas depasser le nombre de ponts indiqué ici
+     * @param $nombrePonts : Le nombre de pont actuel de la ville, on ne depasse pas le nombre de pont max ici
      */
     function __construct($id, $nombrePontsMax, $nombrePonts)
     {
@@ -28,7 +31,7 @@ class Ville
     }
 
     /**
-     * sélecteur qui retourne la valeur de l'attribut id
+     * Sélecteur qui retourne la valeur de l'attribut id
      * @return mixed
      */
     function getId()
@@ -37,7 +40,7 @@ class Ville
     }
 
     /**
-     * sélecteur qui retourne la valeur de l'attribut nombrePontsMax
+     * Sélecteur qui retourne la valeur de l'attribut nombrePontsMax
      * @return mixed
      */
     function getNombrePontsMax()
@@ -46,7 +49,7 @@ class Ville
     }
 
     /**
-     * sélecteur qui retourne la valeur de l'attribut nombrePonts
+     * Sélecteur qui retourne la valeur de l'attribut nombrePonts
      * @return mixed
      */
     function getNombrePonts()
@@ -55,7 +58,7 @@ class Ville
     }
 
     /**
-     * modifieur qui permet de valuer l'attribut nombrePonts
+     * Modifieur qui permet de valuer l'attribut nombrePonts
      * @param $nb
      */
     function setNombrePonts($nb)
@@ -64,8 +67,6 @@ class Ville
     }
 
     //il faut ici implémenter les méthodes qui permettent de lier des villes entre elles, ...
-
-
     /**
      * Retourne le tableau associatif des villes liees de this
      * @return $this->villesLiees
@@ -90,7 +91,7 @@ class Ville
      * Methode permettant de lier les villes entre elles
      * precondition : les villes peuvent être liées
      * postcondition : nombre de ponts <= 2, villesLiees mises a jour sur les deux villes
-     * @param $villeALier Ville que l'on doit lier avec this.
+     * @param $villeALier : Ville que l'on doit lier avec this.
      */
     function lieVille(Ville $villeALier)
     {
@@ -99,7 +100,6 @@ class Ville
             // On change le nombre de ponts entre les deux villes
             $this->setVillesLiees($villeALier);
             $villeALier->setVillesLiees($this);
-        } // Perdu reverifie si il y a trop de pont liés
+        } // Perdu reverifie si il y a trop de pont liés, pas besoin de le faire ici
     }
-
 }

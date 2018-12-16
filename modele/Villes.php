@@ -2,6 +2,11 @@
 // cette classe ne doit pas être modifiée
 require "Ville.php";
 
+/**
+ * Classe Villes.
+ * Cette classe gère l'ensemble de villes, ainsi que les interactions que les composants de cet ensemble ont
+ * entre eux.
+ */
 class Villes
 {
     private $villes;
@@ -21,7 +26,7 @@ class Villes
     }
 
     /**
-     * sélecteur qui retourne la ville en position $i et $j
+     * Sélecteur qui retourne la ville en position $i et $j
      * précondition: la ville en position $i et $j existe
      * @param $i
      * @param $j
@@ -33,7 +38,7 @@ class Villes
     }
 
     /**
-     * modifieur qui value le nombre de ponts de la ville en position $i et $j;
+     * Modifieur qui value le nombre de ponts de la ville en position $i et $j;
      * précondition: la ville en position $i et $j existe
      * @param $i
      * @param $j
@@ -70,7 +75,9 @@ class Villes
      */
     private function entreDeuxVilles($iA, $jA, $iB, $jB, $villes)
     {
-        // On réorganise afin que les points sont dans le bonne ordre et que la boucle for() pour les parcourir apres fonctionne bien
+        /* On réorganise  les coordonées afin que les points sont dans le bonne ordre. Ainsi, nous aurons besoin
+        * que d'un seul for afin de parcourir un point vers l'autre
+        */
         if ($iA > $iB) {
             $tmp = $iA;
             $iA = $iB;
@@ -80,7 +87,6 @@ class Villes
             $jA = $jB;
             $jB = $tmp;
         }
-
         if ($jA > $jB) {
             $tmp = $iA;
             $iA = $iB;
@@ -90,13 +96,12 @@ class Villes
             $jA = $jB;
             $jB = $tmp;
         }
-
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
             for ($j = $jA + 1; $j < $jB; $j++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
-                if ($this->existe($iA, $j) || in_array(array($iA,$j,"v1"), $villes->getPonts()) || in_array(array($iA,$j,"v2"), $villes->getPonts())) {
+                if ($this->existe($iA, $j) || in_array(array($iA, $j, "v1"), $villes->getPonts()) || in_array(array($iA, $j, "v2"), $villes->getPonts())) {
                     return true;
                 }
             }
@@ -105,7 +110,7 @@ class Villes
             // On parcourt la colonne jusqu'a la ville que l'on veut lier
             for ($i = $iA + 1; $i < $iB; $i++) {
                 // On regarde si il y a une ville ou un pont sur le chemin
-                if ($this->existe($i, $jA) || in_array(array($i,$jA,"h1"), $villes->getPonts()) || in_array(array($i,$jA,"h2"), $villes->getPonts())) {
+                if ($this->existe($i, $jA) || in_array(array($i, $jA, "h1"), $villes->getPonts()) || in_array(array($i, $jA, "h2"), $villes->getPonts())) {
                     return true;
                 }
             }
@@ -151,15 +156,17 @@ class Villes
         foreach ($this->villes as $element) {
             // Une fois dedans on reparcourt les elements a l'interieur de ce tableau
             foreach ($element as $ville) {
-                // On mets tous les ponts dans un tableau associatif
+                // On met tous les ponts dans un tableau associatif
                 $ponts[$ville->getId()] = $ville->getVillesLiees();
-                // Pour voir toutes les villes en meme temps
-                // var_dump($ville);
             }
         }
         return $ponts;
     }
 
+    /**
+     * Renvoie les coordonées des ponts sur le plateau de jeu.
+     * @return array : contient les coordonées de chaque pont sur le plateau de jeu.
+     */
     function getPonts()
     {
         $res = array();
@@ -183,10 +190,10 @@ class Villes
                     while ($villeCoord[1] < $coord[1] - 1) {
                         $villeCoord[1]++;
                         if (!in_array($villeCoord, $res)) {
-                            if ($nbponts < 2){
-                              $villeCoord[] = "h1";
-                            } else{
-                              $villeCoord[] = "h2";
+                            if ($nbponts < 2) {
+                                $villeCoord[] = "h1";
+                            } else {
+                                $villeCoord[] = "h2";
                             }
                             $res[] = $villeCoord;
                             array_pop($villeCoord);
@@ -203,11 +210,11 @@ class Villes
                     while ($villeCoord[0] < $coord[0] - 1) {
                         $villeCoord[0]++;
                         if (!in_array($villeCoord, $res)) {
-                          if ($nbponts < 2){
-                            $villeCoord[] = "v1";
-                          } else{
-                            $villeCoord[] = "v2";
-                          }
+                            if ($nbponts < 2) {
+                                $villeCoord[] = "v1";
+                            } else {
+                                $villeCoord[] = "v2";
+                            }
                             $res[] = $villeCoord;
                             array_pop($villeCoord);
                         }
@@ -275,25 +282,27 @@ class Villes
         return false;
     }
 
-    function gagne(){
-      $res = true;
-      foreach ($this->villes as $element) {
-          foreach ($element as $ville) {
-            if ($ville->getNombrePonts() != $ville->getNombrePontsMax()) {
-              $res = false;
+    function gagne()
+    {
+        $res = true;
+        foreach ($this->villes as $element) {
+            foreach ($element as $ville) {
+                if ($ville->getNombrePonts() != $ville->getNombrePontsMax()) {
+                    $res = false;
+                }
             }
-          }
-      }
-      return $res;
+        }
+        return $res;
     }
 
-    function perdu($ville1, $ville2){
-      $res = false;
-      if ($ville1->getNombrePonts() == $ville1->getNombrePontsMax() || $ville2->getNombrePonts() == $ville2->getNombrePontsMax() || $ville1->getVillesLiees()[$ville2->getId()] >= 2){
-        $res = true;
-      }
+    function perdu($ville1, $ville2)
+    {
+        $res = false;
+        if ($ville1->getNombrePonts() == $ville1->getNombrePontsMax() || $ville2->getNombrePonts() == $ville2->getNombrePontsMax() || $ville1->getVillesLiees()[$ville2->getId()] >= 2) {
+            $res = true;
+        }
 
-      return $res;
+        return $res;
     }
 
 
