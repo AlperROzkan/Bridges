@@ -1,3 +1,10 @@
+@keyframes res {
+   0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
 table,
 td {
     border: 1px solid #333;
@@ -21,3 +28,15 @@ p {
     font-size: 20px;
     color: red;
 }
+
+h3 {
+    font-size: 20px;
+
+}
+
+h4{
+    font-size: 24px;
+    animation-name: res;
+    animation-duration: 4s;
+} 
+
