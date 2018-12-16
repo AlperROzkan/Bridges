@@ -28,42 +28,39 @@ class ControleurJeu
 
     function selection()
     {
-        $mmLigne = false; //Variable qui sert pour l'affichage du jeu Si False pas de message d'alerte si true message qui previent que l'on a cliqué sur deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
-        // On regarde si les villes sont dans une variable de session ou non
-        if (!isset($_SESSION['villes']) && !isset($_POST["deco"]) && !isset($_POST["reset"])) {
-            $_SESSION['villes'] = $this->villes;
+        $mmLigne = false; //Variable qui sert pour l'affichage du jeu Si False pas de message d'alerte si true message qui previent que l'on a cliqué sur deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne ont une ville entre elles ou ont un pont dans le sens inverse sur leur trajectoire
+        if (!isset($_SESSION['villes']) && !isset($_POST["deco"]) && !isset($_POST["reset"])) { // On verifie si les villes (et donc le jeu) sont déjà en variable de session ou non et si l'utilisateur ne vient pas d'appuyer sur le bouton reset ou déconnexion
+            $_SESSION['villes'] = $this->villes;  //on initialise le jeu en le mettant en variable de session pour sauvegarder les actions et les ponts
         }
-        // Si l'utilisateur appuie sur le bouton de deconnexion ou pas
-        if (isset($_POST["deco"])) {
-            if (isset($_SESSION['villes'])) {
-                $this->modele->ajoutPartie($_SESSION['pseudo'], false);
+        if (isset($_POST["deco"])) { //On vérifie si l'utilisateur a appuyé sur le bouton de deconnexion
+            if (isset($_SESSION['villes'])) { //si un jeu est en cours
+                $this->modele->ajoutPartie($_SESSION['pseudo'], false); //on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. false = partie perdue
             }
-            session_unset();
-            $this->vue->demandeLogin(false);
-        } else if (isset($_POST["reset"])) {
-            if (isset($_SESSION['villes'])) {
-                $this->modele->ajoutPartie($_SESSION['pseudo'], false);
+            session_unset(); //on detruit toutes les variables de session
+            $this->vue->demandeLogin(false); // on affiche la vue authentification sans essage d'erreur
+        } else if (isset($_POST["reset"])) { // si on appuie sur le bouton reset
+            if (isset($_SESSION['villes'])) { // on verifie si  un jeu est en cours
+                $this->modele->ajoutPartie($_SESSION['pseudo'], false); // on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. false = partie perdue
             }
-            unset($_SESSION['villes']);
-            unset($_SESSION['actif']);
-            $_SESSION['villes'] = $this->villes;
-            $this->vue->commenceJeu($_SESSION['villes'], $mmLigne);
-        } else if (!isset($_POST['villeId'])) {
-            $this->vue->commenceJeu($_SESSION['villes'], $mmLigne);
+            unset($_SESSION['villes']); // on detruit la variable de session liée au jeu
+            unset($_SESSION['actif']); // on detruit la variable de session qui garde la ville cliquée
+            $_SESSION['villes'] = $this->villes; // on réinitialise le jeu
+            $this->vue->commenceJeu($_SESSION['villes'], $mmLigne); // on affiche le jeu. $mmLigne = boolean qui definit si il y le message d'erreur ou non
+        } else if (!isset($_POST['villeId'])) { // si on a pas cliqué sur une ville
+            $this->vue->commenceJeu($_SESSION['villes'], $mmLigne); // on affiche le jeu. $mmLigne = boolean qui definit si il y le message d'erreur ou non
         } else {
-            if (!isset($_SESSION['actif'])) {
-                $this->vue->commenceJeu($_SESSION['villes'], $mmLigne);
-                $_SESSION['actif'] = $_POST["villeId"];
+            if (!isset($_SESSION['actif'])) { // (sinon cela veut dire que l'on a cliqué sur une ville). Si on a pas de ville cliqué en mémoire
+                $this->vue->commenceJeu($_SESSION['villes'], $mmLigne); // on affiche le jeu. $mmLigne = boolean qui definit si il y le message d'erreur ou non
+                $_SESSION['actif'] = $_POST["villeId"]; //on sauvegarde la ville cliquée en variable de session
             } else {
                 // On verifie si les deux villes sont liables
                 if ($this->villes->liable($this->villes->findVilleById($_SESSION['actif'])[0], $this->villes->findVilleById($_SESSION['actif'])[1], $this->villes->findVilleById($_POST['villeId'])[0], $this->villes->findVilleById($_POST['villeId'])[1], $_SESSION['villes'])) {
-                    $perdu = $_SESSION['villes']->perdu($_SESSION['villes']->getVilleById($_SESSION['actif']), $_SESSION['villes']->getVilleById($_POST['villeId']));
+                    $perdu = $_SESSION['villes']->perdu($_SESSION['villes']->getVilleById($_SESSION['actif']), $_SESSION['villes']->getVilleById($_POST['villeId'])); // on definit la boolean perdu graçe à la méthode du modèle pour savoir si le nouveau lien respecte le nombre max
                     // On appelle lieVille sur les deux villes afin que leurs attribut villeLiees soient toutes deux mises a jour
                     $_SESSION['villes']->getVilleById($_SESSION['actif'])->lieVille($_SESSION['villes']->getVilleById($_POST['villeId']));
                 } else {
-                    $mmLigne = true; //treu signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne
+                    $mmLigne = true; //true signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne, ont une ville entre elles ou ont un pont dans le sens inverse sur leur trajectoire
                 }
-                $_SESSION['villes']->getPonts();
                 //on recupere le ratio des 3 meilleurs joueurs
                 foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
                     $ratios[] = $this->modele->stat($player[0]);
