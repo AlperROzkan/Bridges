@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Resultat</title>
+    <link rel="stylesheet" type="text/css" href="../Bridges/vue/styles/jeu.css">
 </head>
 <body>
 <h1>Bridges</h1>
