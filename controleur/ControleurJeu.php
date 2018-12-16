@@ -61,18 +61,26 @@ class ControleurJeu
                 } else {
                     $mmLigne = true; //true signifie que l'on essaye de lier deux villes qui ne sont ni sur la mm ligne ni sur la mm colonne, ont une ville entre elles ou ont un pont dans le sens inverse sur leur trajectoire
                 }
-                //on recupere le ratio des 3 meilleurs joueurs et on les place dans un tableau
-                foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
-                    $ratios[] = $this->modele->stat($player[0]);
-                }
+
+
                 if ($_SESSION['villes']->gagne()) { // si on a gagne
+                    $this->modele->ajoutPartie($_SESSION['pseudo'], true); //on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. true = partie gagnee
+                      //on recupere le ratio des 3 meilleurs joueurs et on les place dans un tableau
+                    foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
+                        $ratios[] = $this->modele->stat($player[0]);
+                    }
                     $this->vue->resultat(true, $this->modele->stat($_SESSION['pseudo']), $this->modele->getTroisMeilleurJoueur(), $ratios); // on affiche la vue resultat
                     unset($_SESSION['villes']); //on supprime le jeu
-                    $this->modele->ajoutPartie($_SESSION['pseudo'], true); //on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. true = partie gagnee
+
                 } else if ($perdu) { //si on a perdu
+                    $this->modele->ajoutPartie($_SESSION['pseudo'], false);//on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. false = partie perdue
+                    //on recupere le ratio des 3 meilleurs joueurs et on les place dans un tableau
+                    foreach ($this->modele->getTroisMeilleurJoueur() as $player) {
+                      $ratios[] = $this->modele->stat($player[0]);
+                    }
                     $this->vue->resultat(false, $this->modele->stat($_SESSION['pseudo']), $this->modele->getTroisMeilleurJoueur(), $ratios);// on affiche la vue resultat
                     unset($_SESSION['villes']);//on supprime le jeu
-                    $this->modele->ajoutPartie($_SESSION['pseudo'], false);//on ajoute un tuple sql. on donne en parametre le pseudo et l'etat de la parti. false = partie perdue
+
                 } else {
                     $this->vue->commenceJeu($_SESSION['villes'], $mmLigne); // on affiche le jeu. $mmLigne = boolean qui definit si il y le message d'erreur ou non
                 }
