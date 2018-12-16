@@ -29,17 +29,18 @@ if ($gagne) {
   <input type="submit" name="reset" value="Reset">
 </form>
 <br>
-Vous avez un ratio w/l de : <?php echo $ratio; ?>
+<h3>Vous avez un ratio partiesGagnées/partiesJouées de : <?php echo $ratio; ?></h3>
 <br>
-Meilleurs joueurs selon le nombre total de parties gagnées :
+<br>
+<h3>Top 3 des meilleurs joueurs selon le nombre total de parties gagnées :</h3>
+<h4>
 <?php
 $i = 0; //compteur pour parcourir le ratio des meilleurs joueurs
 foreach ($bestPlayers as $player) {
-  echo "<br>".$player[0]."  nbWins : ".$player[1]."  ratio : ".$ratiosBestPlayers[$i];
+  echo "<br>".$player[0]." avec ".$player[1]." victoires et un ratio de ".$ratiosBestPlayers[$i]."<br>";
   $i++;
 }
-
-
  ?>
+</h4>
 </body>
 </html>
