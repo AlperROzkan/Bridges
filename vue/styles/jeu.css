@@ -1,8 +1,7 @@
 @keyframes test {
   0%   {color:red;}
-  25%  {color:yellow;}
-  50%  {color:blue;}
-  75%  {color:green;}
+  33%  {color:blue;}
+  66%  {color:green;}
   100% {color:red;}
 }
 table,
@@ -36,8 +35,12 @@ h3 {
 
 h4{
     font-size: 24px;
+   
+} 
+
+h5{
+    font-size: 24px;
     animation-name: test;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-} 
-
+}

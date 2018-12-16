@@ -38,7 +38,7 @@ if ($gagne) {
 <?php
 $i = 0; //compteur pour parcourir le ratio des meilleurs joueurs
 foreach ($bestPlayers as $player) {
-  echo "<br>".$player[0]." avec ".$player[1]." victoires et un ratio de ".$ratiosBestPlayers[$i]."<br>";
+  echo "<br><h5>".$player[0]."</h5> avec <h5>".$player[1]."</h5> victoires et un ratio de <h5>".$ratiosBestPlayers[$i]."</h5><br>";
   $i++;
 }
  ?>
