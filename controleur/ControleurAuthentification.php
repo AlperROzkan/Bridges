@@ -33,15 +33,15 @@ class ControleurAuthentification
      */
     function accueil()
     {
-        if (isset($_SESSION['pseudo'])) {
-            $this->vue->commenceJeu($this->villes, false);
-        } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) {
-            $_SESSION['pseudo'] = $_POST["pseudo"];
-            $this->vue->commenceJeu($this->villes, false);
-        } else if (!isset($_SESSION['pseudo']) && (!empty($_POST["pseudo"]) || !empty($_POST["mdp"]))) {
-            $this->vue->demandeLogin(true);
+        if (isset($_SESSION['pseudo'])) { // on vérifie si la variable de session pseudo est set
+            $this->vue->commenceJeu($this->villes, false);  // on actualise la vue pour afficher le jeu. false nous sert à ne pas afficher la ligne d'erreur dans jeu.php
+        } else if (!empty($_POST["pseudo"]) && $this->modele->exists($_POST["pseudo"]) && (crypt($_POST["mdp"], $this->modele->getMdp($_POST["pseudo"])) == $this->modele->getMdp($_POST["pseudo"]))) { //on verifie si le pseudo et le mdp sont valides
+            $_SESSION['pseudo'] = $_POST["pseudo"]; //le pseudo devient une variable de session
+            $this->vue->commenceJeu($this->villes, false); // on actualise la vue pour afficher le jeu. false nous sert à ne pas afficher la ligne d'erreur dans jeu.php
+        } else if (!isset($_SESSION['pseudo']) && (!empty($_POST["pseudo"]) || !empty($_POST["mdp"]))) { //si on entre pas un pseudo ou/et un mdp
+            $this->vue->demandeLogin(true); // on affiche la vue d'authentification. true sert à afficher l'erreur
         } else {
-            $this->vue->demandeLogin(false);
+            $this->vue->demandeLogin(false); // on affiche la vue d'authentification. false sert à ne pas afficher l'erreur
 
         }
     }
