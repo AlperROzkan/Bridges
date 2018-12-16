@@ -78,7 +78,7 @@ class Villes
         /* On réorganise  les coordonées afin que les points sont dans le bonne ordre. Ainsi, nous aurons besoin
         * que d'un seul for afin de parcourir un point vers l'autre
         */
-        if ($iA > $iB) {
+        if ($iA > $iB || $jA > $jB) {
             $tmp = $iA;
             $iA = $iB;
             $iB = $tmp;
@@ -87,15 +87,7 @@ class Villes
             $jA = $jB;
             $jB = $tmp;
         }
-        if ($jA > $jB) {
-            $tmp = $iA;
-            $iA = $iB;
-            $iB = $tmp;
 
-            $tmp = $jA;
-            $jA = $jB;
-            $jB = $tmp;
-        }
         // Si les deux villes sont sur la même abscisse
         if ($iA == $iB && $jA != $jB) {
             // On parcourt la ligne jusqu'a la ville que l'on veut lier
@@ -133,7 +125,7 @@ class Villes
     {
         // On regarde si les deux villes données existent
         if ($this->existe($iA, $jA) && $this->existe($iB, $jB)) {
-            // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville entre les deux
+            // On verifie si les villes sont dans les même lignes ou dans les mêmes colonnes, on regarde aussi si il y a une ville ou un pont entre les deux
             if ((($iA == $iB && $jA != $jB) || ($iA != $iB && $jA == $jB)) && !$this->entreDeuxVilles($iA, $jA, $iB, $jB, $villes)) {
                 return true;
             }
@@ -222,7 +214,6 @@ class Villes
                     }
                 }
             }
-
         }
         return $res;
     }
