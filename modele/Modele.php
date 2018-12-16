@@ -135,7 +135,7 @@ class Modele
     public function ajoutPartie($pseudo, $etatPartie)
     {
         try {
-            // On recupere l'id de la partie précédente si il y'en a une et sinon on pose cet id a 0
+            // On recupere l'id de la partie précédente
             $statement = $this->connexion->query("SELECT id FROM parties ORDER BY id DESC LIMIT 1;");
             $res = $statement->fetch(); // fetch renvoie false si il n'y a rien dans la table
             // On initialise l'id a 1 si il n'y a rien dans la table
@@ -161,16 +161,19 @@ class Modele
     function stat($pseudo)
     {
         try {
+            //on renvoie le nombre de parties totales jouées par le joueur
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? ;");
             $statement->bindParam(1, $pseudo);
             $statement->execute();
             $res = $statement->fetch();
 
+            //on renvoie le nombre de parties totales gagnées par le joueur
             $statement = $this->connexion->prepare("SELECT COUNT(id) FROM parties WHERE pseudo=? AND partieGagnee = 1;");
             $statement->bindParam(1, $pseudo);
             $statement->execute();
             $res2 = $statement->fetch();
 
+            //on retourne le ratio partiesGagnées/partiesTotales
             return $res2[0] / $res[0];
 
         } catch (PDOException $e) {
@@ -184,6 +187,7 @@ class Modele
      */
     function getTroisMeilleurJoueur()
     {
+        //on retourne les 3 joueurs qui ont gagné le plus de parties
         $statement = $this->connexion->query("SELECT pseudo,count(pseudo) FROM (SELECT pseudo,id FROM parties WHERE partieGagnee = 1)AS subquery group by pseudo ORDER BY count(pseudo) DESC LIMIT 3;");
         return ($res = $statement->fetchAll());
     }
