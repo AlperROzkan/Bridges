@@ -21,10 +21,11 @@ class Vue
     }
 
     /**
-     * @param $gagne
-     * @param $ratio
-     * @param $bestPlayers
-     * @param $ratiosBestPlayers
+    *Affiche la page des résultats
+     * @param $gagne bool pour savoir si la partie est gagnée ou perdue
+     * @param $ratio ratio partiesgagnées/partiesjouées par le joueur
+     * @param $bestPlayers tableau des 3 joueurs ayant le plus de victoires
+     * @param $ratiosBestPlayers tableau des ratios partiesgagnées/partiesjouées des 3 joueurs ayant le plus de victoires 
      */
     function resultat($gagne, $ratio, $bestPlayers, $ratiosBestPlayers)
     {
