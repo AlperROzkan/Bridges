@@ -26,11 +26,11 @@ class Routeur
      */
     public function routerRequete()
     {
-        if(isset($_SESSION['pseudo'])){
-            $this->ControleurJeu->selection();            
-            
+        if(isset($_SESSION['pseudo'])){ //si on est connecté
+            $this->ControleurJeu->selection();//on lance le controleur du jeu
+
         } else {
-            $this->ControleurAuthentification->accueil();
+            $this->ControleurAuthentification->accueil(); //on lance le controleur de l'authentification
         }
     }
 }
