@@ -163,9 +163,10 @@ class Villes
     {
         $res = array(); //le tableau qui contiendra coordonnées + type
         $liaisons = $this->getToutesVillesLiees(); // on récupère le tableau associatif qui regroupe toutes les villes liées
+        
         for ($l = 0; $l < sizeof($liaisons); $l++) { //on parcour le tableau
-
-            $villesliees = array_keys($liaisons[$l]); // on stock l'id de la ville dont on veut vérifier les liaisons
+            if($liaisons[$l] != null){
+                $villesliees = array_keys($liaisons[$l]); // on stock l'id de la ville dont on veut vérifier les liaisons
             foreach ($villesliees as $ville) { // on parcours toutes les liaisons de la ville
                 $coord = $this->findVilleById($l); // on stock les coordonnées de la ville dont on veut vérifier les liaisons
                 $villeCoord = $this->findVilleById($ville); //on stock les coordonnées de la ville liée à notre ville
@@ -215,6 +216,7 @@ class Villes
                 }
             }
         }
+    }
         return $res; //on retourne le tableau de triplets regroupant tous les pont créés
     }
 
